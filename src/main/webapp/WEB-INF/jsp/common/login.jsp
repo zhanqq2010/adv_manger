@@ -10,8 +10,8 @@
 
     <title>Login</title>
 
-    <link href="${pageContext.request.contextPath}/staticcss/style.css" rel="stylesheet">
-    <link href="${pageContext.request.contextPath}/staticcss/style-responsive.css" rel="stylesheet">
+    <link href="${pageContext.request.contextPath}/static/css/style.css" rel="stylesheet">
+    <link href="${pageContext.request.contextPath}/static/css/style-responsive.css" rel="stylesheet">
 
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
@@ -27,7 +27,7 @@
     <form class="form-signin" action="${pageContext.request.contextPath}/user/login" method="POST">
         <div class="form-signin-heading text-center">
             <h1 class="sign-title">登录</h1>
-            <img src="images/login-logo.png" alt=""/>
+            <img src="${pageContext.request.contextPath}/static/images/login-logo.png" alt=""/>
         </div>
         <div class="login-wrap">
             <input type="text" name="username" class="form-control" placeholder="账号" autofocus>
@@ -84,9 +84,9 @@
 <!-- Placed js at the end of the document so the pages load faster -->
 
 <!-- Placed js at the end of the document so the pages load faster -->
-<script src="${pageContext.request.contextPath}/staticjs/jquery-1.10.2.min.js"></script>
-<script src="${pageContext.request.contextPath}/staticjs/bootstrap.min.js"></script>
-<script src="${pageContext.request.contextPath}/staticjs/modernizr.min.js"></script>
+<script src="${pageContext.request.contextPath}/static/js/jquery-1.10.2.min.js"></script>
+<script src="${pageContext.request.contextPath}/static/js/bootstrap.min.js"></script>
+<script src="${pageContext.request.contextPath}/static/js/modernizr.min.js"></script>
 
 </body>
 </html>
