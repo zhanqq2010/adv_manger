@@ -38,7 +38,7 @@ public class PartnerServiceImpl implements PartnerService {
 	public int updatePartner(String username, Partner partner)
 			throws Exception {
 		partner.setUsername(username);
-		return partnerMapper.updateByPrimaryKey(partner);
+		return partnerMapper.updateByPrimaryKeyWithBLOBs(partner);
 		
 	}
 

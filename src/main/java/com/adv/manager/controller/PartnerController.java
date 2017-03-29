@@ -1,5 +1,6 @@
 package com.adv.manager.controller;
 
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -40,6 +41,7 @@ public class PartnerController {
 	@RequestMapping("/goAddPartner/{type}")
 	public String goAddPartner(@PathVariable("type") int type,Model model) throws Exception{
 		model.addAttribute("option","add");
+		model.addAttribute("type",type);
 		if(type == 1){
 			model.addAttribute("typeDescription","手机渠道商");
 		}else if(type == 2){
@@ -56,22 +58,24 @@ public class PartnerController {
 	 * @return
 	 * @throws Exception
 	 */
+	@RequestMapping("/createPartner")
 	public String createPartner(Partner partner)throws Exception{
 		int id = service.addPartner(partner);
 		return "redirect:/partner/queryPartnerByType/" + partner.getType();
 	}
 	
-	@RequestMapping("/dealPartnerOpt")
-	public String dealPartnerOptioin( String option,Partner partner) throws Exception{
+/*	@RequestMapping("/dealPartnerOpt/{type}")
+	public String dealPartnerOptioin(@PathVariable("type") int type, String option,Partner partner) throws Exception{
 		String url = "";
+		partner.setCreatetime(new Date(System.currentTimeMillis()));
 		if("edit".equals(option)){
 			url = updatePartner(partner);
 		}else if("add".equals(option)){
-			url = createPartner(partner);
+			url = createPartner(partner,type);
 		}
 		return url ;
 	}
-	
+*/	
 	/**
 	 * 批量删除合作伙伴  
 	 * @return
@@ -102,11 +106,10 @@ public class PartnerController {
 				model.addAttribute("typeDescription","合作伙伴");
 			}
 		}
-//		return "partner/editPartner";
-		return "partner/addPartner";
+		return "partner/editPartner";
 	}
 	
-
+	@RequestMapping("/updatePartner")
 	public String updatePartner(Partner partner)throws Exception{
 		service.updatePartner(partner.getUsername(), partner);
 		return "redirect:/partner/queryPartnerByType/" + partner.getType();
