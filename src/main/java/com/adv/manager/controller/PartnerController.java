@@ -33,13 +33,13 @@ public class PartnerController {
 				model.addAttribute("typeDescription","合作伙伴");
 			}
 		}
-		return "partner";
+		return "partner/partner";
 	}
 	
 	
 	@RequestMapping("/goAddPartner/{type}")
 	public String goAddPartner(@PathVariable("type") int type,Model model) throws Exception{
-		
+		model.addAttribute("option","add");
 		if(type == 1){
 			model.addAttribute("typeDescription","手机渠道商");
 		}else if(type == 2){
@@ -47,7 +47,7 @@ public class PartnerController {
 		}else{
 			model.addAttribute("typeDescription","合作伙伴");
 		}
-		return "addPartner";
+		return "partner/addPartner";
 	}
 	
 	/**
@@ -56,14 +56,24 @@ public class PartnerController {
 	 * @return
 	 * @throws Exception
 	 */
-	@RequestMapping("/createPartner")
 	public String createPartner(Partner partner)throws Exception{
 		int id = service.addPartner(partner);
 		return "redirect:/partner/queryPartnerByType/" + partner.getType();
 	}
 	
+	@RequestMapping("/dealPartnerOpt")
+	public String dealPartnerOptioin( String option,Partner partner) throws Exception{
+		String url = "";
+		if("edit".equals(option)){
+			url = updatePartner(partner);
+		}else if("add".equals(option)){
+			url = createPartner(partner);
+		}
+		return url ;
+	}
+	
 	/**
-	 * 批量删除合作伙伴
+	 * 批量删除合作伙伴  
 	 * @return
 	 */
 	@RequestMapping("/delPartners/{type}")
@@ -83,6 +93,7 @@ public class PartnerController {
 		if(partner != null){
 			model.addAttribute("partner", partner);
 			Integer type = partner.getType();
+			model.addAttribute("option","edit");
 			if(type == 1){
 				model.addAttribute("typeDescription","手机渠道商");
 			}else if(type == 2){
@@ -91,11 +102,11 @@ public class PartnerController {
 				model.addAttribute("typeDescription","合作伙伴");
 			}
 		}
-		return "editPartner";
+//		return "partner/editPartner";
+		return "partner/addPartner";
 	}
 	
 
-	@RequestMapping("/updatePartner")
 	public String updatePartner(Partner partner)throws Exception{
 		service.updatePartner(partner.getUsername(), partner);
 		return "redirect:/partner/queryPartnerByType/" + partner.getType();

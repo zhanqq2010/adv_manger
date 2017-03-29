@@ -45,69 +45,77 @@
                 <div class="col-lg-12">
                     <section class="panel">
                         <header class="panel-heading">
-                        	  添加${typeDescription}
+                        	  <c:if test="${option == 'edit' } ">编辑</c:if>
+                        	  <c:if test="${option == 'add' }">添加</c:if>
+                        	  ${typeDescription}
                         </header>
                         <div class="panel-body">
                             <div class="form">
-                                <form class="cmxform form-horizontal adminex-form" id="signupForm" method="get" action="">
+                                <form class="cmxform form-horizontal adminex-form" id="signupForm" method="post" action="${pageContext.request.contextPath}/partner/dealPartnerOpt">
+                                  
+                                  	<input name="option" value="${option}" type="hidden">
                                     <div class="form-group ">
                                         <label for="firstname" class="control-label col-lg-2"><label >厂商类型:</label></label>
                                         <div class="col-lg-3">
- 											<input class="form-control" id="disabledInput" type="text" placeholder="${typeDescription}" disabled>
+ 											<input class="form-control" id="disabledInput"  type="text" placeholder="${typeDescription}" disabled>
+                                        	<input name="type" value="${type}" type="hidden">
                                         </div>
                                     </div>
                                     <div class="form-group ">
                                         <label for="lastname" class="control-label col-lg-2"><label>名称:</label></label>
                                         <div class="col-lg-3">
-                                            <input class=" form-control" id="lastname" name="lastname" type="text" />
+                                            <input class=" form-control" id="nickname" name="nickname" type="text" value="${partner.nickname }" />
                                         </div>
                                     </div>
                                     <div class="form-group ">
                                         <label for="username" class="control-label col-lg-2">厂商标识(用户名):</label>
                                         <div class="col-lg-3">
-                                            <input class="form-control " id="username" name="username" type="text" />
+                                            <input class="form-control"  name="username"  type="text"  value="${partner.username }" <c:if test="${option == 'edit' }">disabled</c:if> />
                                         </div>
                                     </div>
                                     <div class="form-group ">
                                         <label for="password" class="control-label col-lg-2">数据同步地址:</label>
                                         <div class="col-lg-3">
-                                            <input class="form-control " id="password" name="password" type="password" />
+                                            <input class="form-control " id="datasyncaddress" name="datasyncaddress" type="text" value="${partner.datasyncaddress }" />
                                         </div>
                                     </div>
                                     <div class="form-group ">
                                         <label for="confirm_password" class="control-label col-lg-2">地址:</label>
                                         <div class="col-lg-3">
-                                            <input class="form-control " id="confirm_password" name="confirm_password" type="password" />
+                                            <input class="form-control " id="address" name="address" type="text" value="${partner.address }" />
                                         </div>
                                     </div>
                                     <div class="form-group ">
                                         <label for="confirm_password" class="control-label col-lg-2">电话:</label>
                                         <div class="col-lg-3">
-                                            <input class="form-control " id="confirm_password" name="confirm_password" type="number" />
+                                            <input class="form-control " id="phoneNo" name="phoneNo" type="text" value="${partner.phoneNo }" />
                                         </div>
                                     </div>
                                     <div class="form-group ">
                                         <label for="confirm_password" class="control-label col-lg-2">QQ:</label>
                                         <div class="col-lg-3">
-                                            <input class="form-control " id="confirm_password" name="confirm_password" type="number" />
+                                            <input class="form-control " id="qqNo" name="qqNo" type="text" value="${partner.qqNo }" />
                                         </div>
                                     </div>
                                     <div class="form-group ">
                                         <label for="email" class="control-label col-lg-2">Email</label>
                                         <div class="col-lg-3">
-                                            <input class="form-control " id="email" name="email" type="email" />
+                                            <input class="form-control " id="email" name="email" type="email" value="${partner.email }" />
                                         </div>
                                     </div>
 									<div class="form-group">
 										<label class="control-label col-lg-2">备注:</label>
 										<div class="col-lg-3">
-											<textarea name="remark" rows="3" class="form-control"></textarea>
+											<textarea name="remark" rows="3" class="form-control" >${partner.remark }</textarea>
 										</div>
 									</div>
                                     <div class="form-group">
                                         <div class="col-lg-offset-2 col-lg-10">
-                                            <button class="btn btn-primary" type="submit">添加</button>
-                                            <button class="btn btn-default" type="button">取消</button>
+                                          	<button class="btn btn-primary" type="submit">
+												提交
+											</button>
+                                            &nbsp;&nbsp;&nbsp;&nbsp;
+                                            <a class="btn btn-default" href="${pageContext.request.contextPath}/partner/queryPartnerByType/2" type="button">取消</a>
                                         </div>
                                     </div>
                                 </form>

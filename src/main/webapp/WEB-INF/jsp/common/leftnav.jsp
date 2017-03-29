@@ -37,7 +37,7 @@
                 <li><a href="index.html"><i class="fa fa-home"></i> <span>主页</span></a></li>
                 <li class="menu-list nav-active"><a href=""><i class="fa fa-user"></i> <span>合作方管理</span></a>
                     <ul class="sub-menu-list">
-                        <li class="active"><a href="#"> 用户管理</a></li>
+                        <li><a href="#"> 用户管理</a></li>
                         <li><a href="${pageContext.request.contextPath}/partner/queryPartnerByType/2"> 广告厂商</a></li>
                         <li><a href="${pageContext.request.contextPath}/partner/queryPartnerByType/1"> 手机渠道商</a></li>
                         <li><a href="horizontal_menu.html"> 手机渠道商数据录入</a></li>
