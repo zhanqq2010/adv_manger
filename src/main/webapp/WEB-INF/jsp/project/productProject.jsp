@@ -58,9 +58,7 @@
                 <div class="adv-table editable-table ">
                 <div class="clearfix">
                     <div class="btn-group">
-                       <a href="${pageContext.request.contextPath}/partner/goAddPartner/${type}"
-						class="btn btn-primary"><i class="glyphicon glyphicon-plus"></i>
-						添加${typeDescription} </a> 
+                      <a href="${pageContext.request.contextPath}/project/goAddProductProject/${partnerUsername}" class="btn btn-primary"><i class="glyphicon glyphicon-plus"></i> 添加项目 </a>
                     </div>
                     <div class="btn-group pull-right">
                         <button class="btn btn-default dropdown-toggle" data-toggle="dropdown">工具 <i class="fa fa-angle-down"></i>
@@ -76,23 +74,22 @@
                 <table class="table table-striped table-hover table-bordered" id="editable-sample">
                 <thead>
                 <tr>
+                    <th class="col-lg-1 col-xs-1">项目ID</th>
                     <th class="col-lg-1 col-xs-1">名称</th>
-                    <th class="col-lg-1 col-xs-1">登录名</th>
-                    <th class="col-lg-7 col-xs-7">备注</th>
-                    <th class="col-lg-1 col-xs-1">编辑</th>
-                    <th class="col-lg-1 col-xs-1">项目管理</th>
-                    <th class="col-lg-1 col-xs-1">删除</th>
+                    <th class="col-lg-1 col-xs-1">apk名称</th>
+                    <th class="col-lg-1 col-xs-1">下载地址</th>
+                    <th class="col-lg-1 col-xs-1">备注</th>
+                    <th class="col-lg-1 col-xs-1">操作</th>
                 </tr>
                 </thead>
                 <tbody>
 	              <c:forEach var="partner" items="${partners}">
 						<tr class="">
-							<td >${partner.nickname}</td>
-							<td >${partner.username}</td>
-							<td >${partner.remark}</td>
-							<td ><a
-								href="${pageContext.request.contextPath}/partner/goEditPartner/${partner.username}">编辑</a>
-								 </td>
+					        <td>${ productProject.pid}</td>
+				       	    <td>${ productProject.pname}</td>
+							<td>${ productProject.appname}</td>
+        					<td>${ productProject.url}</td>	
+        					<td><textarea name="remark" rows="1" class="textareaDisEdit" readonly="readonly">${productProject.remark}</textarea> </td>
 							<td><a
 								href="${pageContext.request.contextPath}/project/goProject/${partner.username}/${partner.type}">项目管理</a></td>
 							<td><a
