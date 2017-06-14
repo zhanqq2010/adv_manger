@@ -36,10 +36,18 @@
         <%@ include file="/WEB-INF/jsp/common/topnav.jsp"%>
         <!-- header section end-->
 
-        <!-- page heading start-->
-     <!--    <div class="page-heading">
-          		  广告厂商
-        </div> -->
+ <!-- page heading start-->
+        <div class="page-heading">
+            <h3>
+            	   广告管理平台
+            </h3>
+            <ul class="breadcrumb">
+                <li>
+                    <a href="#">首页</a>
+                </li>
+                <li class="active">${typeDescription}项目</li>
+            </ul>
+        </div>
         <!-- page heading end-->
 
         <!--body wrapper start-->

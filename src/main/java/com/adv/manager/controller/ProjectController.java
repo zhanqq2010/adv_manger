@@ -50,10 +50,12 @@ public class ProjectController {
 			@PathVariable("type") Integer type, Model model) throws Exception {
 		model.addAttribute("partnerUsername", partnerUsername);
 		if (type == 1) {
+			model.addAttribute("typeDescription","手机渠道商");
 			List<ChannelProject> channelProjects = service.queryChannelProjects(partnerUsername);
 			model.addAttribute("channelProjects", channelProjects);
 			return "project/channelProject";
 		} else if (type == 2) {
+			model.addAttribute("typeDescription","广告厂商");
 			List<ProductProject> productProjects = service.queryProductProjects(partnerUsername);
 			model.addAttribute("productProjects", productProjects);
 			return "project/productProject";

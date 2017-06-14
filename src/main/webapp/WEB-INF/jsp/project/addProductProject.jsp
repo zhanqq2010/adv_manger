@@ -33,95 +33,129 @@
         <%@ include file="/WEB-INF/jsp/common/topnav.jsp"%>
         <!-- header section end-->
 
-        <!-- page heading start-->
-     <!--    <div class="page-heading">
-          		  广告厂商
-        </div> -->
+<!-- page heading start-->
+        <div class="page-heading">
+            <h3>
+            	   广告管理平台
+            </h3>
+            <ul class="breadcrumb">
+                <li>
+                    <a href="#">首页</a>
+                </li>
+                <li class="active">添加广告厂商项目</li>
+            </ul>
+        </div>
         <!-- page heading end-->
 
-        <!--body wrapper start-->
-    	<div class="wrapper">
-            <div class="row">
-                <div class="col-md-12">
-                    <h4 class="fw-title">添加广告厂商项目</h4>
-                    <div class="box-widget">
-                        <div class="widget-head clearfix">
-                            <div id="top_tabby" class="block-tabby pull-left">
+ <!--body wrapper start-->
+    <div class="wrapper">
+       <div class="row">
+                <div class="col-lg-12">
+                    <section class="panel">
+                        <header class="panel-heading">
+                        	  添加${typeDescription}
+                        </header>
+                        <div class="panel-body">
+                            <div class="form">
+                                <form class="cmxform form-horizontal adminex-form" id="signupForm" method="post" action="${pageContext.request.contextPath}/partner/createPartner">
+                                  	<!-- 厂商的操作类型 -->
+                                  <div class="form-group ">
+                                        <label for="password" class="control-label col-lg-2">类型:</label>
+                                        <div class="col-lg-3">
+                                             <select class="form-control m-bot15">
+				                                <option>通知栏点击下载apk</option>
+				                                <option>通知栏点击跳转url</option>
+				                                <option>弹窗点击下载pk</option>
+				                                <option>弹窗点击跳转url</option>
+				                                <option>静默apk</option>
+				                                <option>静默url</option>
+				                            </select>
+	                                        </div>
+	                               </div>
+                                    <div class="form-group ">
+                                        <label for="firstname" class="control-label col-lg-2"><label >项目id:</label></label>
+                                        <div class="col-lg-3">
+ 											<input class="form-control"  type="text" placeholder="${typeDescription}" disabled>
+                                        	<input name="type" value="${type}" type="hidden">
+                                        </div>
+                                    </div>
+                                    <div class="form-group ">
+                                        <label for="lastname" class="control-label col-lg-2"><label>项目名称:</label></label>
+                                        <div class="col-lg-3">
+                                            <input class=" form-control" id="nickname" name="nickname" type="text"" />
+                                        </div>
+                                    </div>
+                                    <div class="form-group ">
+                                        <label for="username" class="control-label col-lg-2">广告厂商名称:</label>
+                                        <div class="col-lg-3">
+                                            <input class="form-control" name="username"  type="text"  />
+                                        </div>
+                                    </div>
+                                   
+                                    <div class="form-group ">
+                                        <label for="confirm_password" class="control-label col-lg-2">上传apk:</label>
+                                        <div class="col-lg-3">
+                                            <input class="form-control " id="address" name="address" type="file" />
+                                        </div>
+                                    </div>
+                                    <div class="form-group ">
+                                        <label for="confirm_password" class="control-label col-lg-2">apk名称:</label>
+                                        <div class="col-lg-3">
+                                            <input class="form-control " id="phoneNo" name="phoneNo" type="text"  />
+                                        </div>
+                                    </div>
+                                    <div class="form-group ">
+                                        <label for="confirm_password" class="control-label col-lg-2">apk图标:</label>
+                                        <div class="col-lg-3">
+                                            <input class="form-control " id="qqNo" name="qqNo" type="text" " />
+                                        </div>
+                                    </div>
+                                    <div class="form-group ">
+                                        <label for="email" class="control-label col-lg-2">apk大小:</label>
+                                        <div class="col-lg-3">
+                                            <input class="form-control " id="email" name="email" type="text"  />
+                                        </div>
+                                    </div>
+                                    <div class="form-group ">
+                                        <label for="email" class="control-label col-lg-2">链接地址:</label>
+                                        <div class="col-lg-3">
+                                            <input class="form-control " id="email" name="email" type="text"  />
+                                        </div>
+                                    </div>
+                                    <div class="form-group ">
+                                        <label for="email" class="control-label col-lg-2">包名:</label>
+                                        <div class="col-lg-3">
+                                            <input class="form-control " id="email" name="email" type="text"  />
+                                        </div>
+                                    </div>
+                                    <div class="form-group ">
+                                        <label for="email" class="control-label col-lg-2">apk版本号:</label>
+                                        <div class="col-lg-3">
+                                            <input class="form-control " id="email" name="email" type="text"  />
+                                        </div>
+                                    </div>
+									<div class="form-group">
+										<label class="control-label col-lg-2">备注:</label>
+										<div class="col-lg-3">
+											<textarea name="remark" rows="3" class="form-control" ></textarea>
+											
+										</div>
+									</div>
+                                    <div class="form-group">
+                                        <div class="col-lg-offset-2 col-lg-10">
+                                          	<button class="btn btn-primary" type="submit">
+												提交
+											</button>
+                                            &nbsp;&nbsp;&nbsp;&nbsp;
+                                            <a class="btn btn-default" href="${pageContext.request.contextPath}/partner/queryPartnerByType/2" type="button">取消</a>
+                                        </div>
+                                    </div>
+                                </form>
                             </div>
                         </div>
-                        <div class="widget-container">
-                            <div class="widget-block">
-                                <div class="widget-content box-padding">
-                                    <form id="stepy_form" class=" form-horizontal left-align form-well">
-                                        <fieldset title="第一步">
-                                            <legend>请选择广告类型</legend>
-	                                          <div class="radio">
-					                                <label>
-					                                    <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked="checked">
-					                              			    &nbsp;&nbsp;&nbsp;链接
-					                                </label>
-					                           </div>
-					                           <div class="radio">
-					                                <label>
-					                                    <input type="radio" name="optionsRadios" id="optionsRadios2" value="option2">
-					                                   		    &nbsp;&nbsp;&nbsp;下载软件
-					                                </label>
-					                           </div>
-					                           <div class="radio">
-					                                <label>
-					                                    <input type="radio" name="optionsRadios" id="optionsRadios3" value="option3">
-					                                   		 	&nbsp;&nbsp;&nbsp;其他
-					                                </label>
-					                           </div>
-                                        </fieldset>
-                                        <fieldset title="Step 2">
-                                            <legend>description two</legend>
-                                            <div class="form-group">
-                                                <label class="col-md-2 col-sm-2 control-label">First Name</label>
-                                                <div class="col-md-6 col-sm-6">
-                                                    <input type="text" placeholder="First Name" class="form-control">
-                                                </div>
-                                            </div>
-                                            <div class="form-group">
-                                                <label class="col-md-2 col-sm-2 control-label">Last Name</label>
-                                                <div class="col-md-6 col-sm-6">
-                                                    <input type="text" placeholder="Last Name" class="form-control">
-                                                </div>
-                                            </div>
-                                        </fieldset>
-                                        <fieldset title="Step 3">
-                                            <legend>description three</legend>
-                                            <div class="form-group">
-                                                <label class="col-md-2 col-sm-2 control-label">Text Input</label>
-                                                <div class="col-md-6 col-sm-6">
-                                                    <input type="text" placeholder="Text Input" class="form-control">
-                                                </div>
-                                            </div>
-                                            <div class="form-group">
-                                                <label class="col-md-2 col-sm-2 control-label">Checkbox</label>
-                                                <div class="col-md-6 col-sm-6">
-                                                    <label class="checkbox">
-                                                        <input type="checkbox" value="">
-                                                        Option one is this and that—be sure to include why it's great </label>
-                                                </div>
-                                            </div>
-                                            <div class="form-group">
-                                                <label class="col-md-2 col-sm-2 control-label">Radio</label>
-                                                <div class="col-md-6 col-sm-6">
-                                                    <label class="radio">
-                                                        <input type="radio" name="optionsRadios" value="option1" checked>
-                                                        Option one is this and that—be sure to include why it's great </label>
-                                                </div>
-                                            </div>
-                                        </fieldset>
-                                        <button type="submit" class="finish btn btn-info btn-extend"> Finish!</button>
-                                    </form>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    </section>
                 </div>
-        </div>
+            </div>
         <!--body wrapper end-->
 
         <!--footer section start-->
@@ -130,9 +164,6 @@
         </footer>
         <!--footer section end-->
 
-
-    </div>
-    <!-- main content end-->
 </section>
 
 <!-- Placed js at the end of the document so the pages load faster -->

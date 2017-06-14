@@ -90,6 +90,18 @@ public class PartnerController {
 		}
 		return "redirect:/partner/queryPartnerByType/" + type;
 	}
+	/**
+	 * 批量删除合作伙伴  
+	 * @return
+	 */
+	@RequestMapping("/delPartner/{username}/{type}")
+	public String delPartner(@PathVariable("username") String username, @PathVariable("type") String type){
+		service.delPartnerByUsername(username);
+		return "redirect:/partner/queryPartnerByType/" + type;
+	}
+	
+	
+	
 	
 	@RequestMapping("/goEditPartner/{username}")
 	public String goEditPartner(@PathVariable("username") String username,Model model) throws Exception{

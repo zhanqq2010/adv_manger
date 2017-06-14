@@ -38,7 +38,7 @@
 
     <!-- 配置切面 aop -->
     <aop:config>
-        <aop:advisor advice-ref="interceptorAdvice" pointcut="execution(* com.hatchbeen.adv.ddl.service.impl.*.*(..))"/>
+        <aop:advisor advice-ref="interceptorAdvice" pointcut="execution(* com.adv.manager.service.impl.*.*(..))"/>
     </aop:config>
 
 </beans>

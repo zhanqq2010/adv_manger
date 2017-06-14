@@ -36,12 +36,19 @@
         <%@ include file="/WEB-INF/jsp/common/topnav.jsp"%>
         <!-- header section end-->
 
-        <!-- page heading start-->
-     <!--    <div class="page-heading">
-          		  广告厂商
-        </div> -->
+ <!-- page heading start-->
+        <div class="page-heading">
+            <h3>
+            	   广告管理平台
+            </h3>
+            <ul class="breadcrumb">
+                <li>
+                    <a href="#">首页</a>
+                </li>
+                <li class="active">${typeDescription}</li>
+            </ul>
+        </div>
         <!-- page heading end-->
-
         <!--body wrapper start-->
     <div class="wrapper">
              <div class="row">
@@ -96,7 +103,7 @@
 							<td><a
 								href="${pageContext.request.contextPath}/project/goProject/${partner.username}/${partner.type}">项目管理</a></td>
 							<td><a
-								href="#">删除</a></td>
+								href="${pageContext.request.contextPath}/partner/delPartner/${partner.username}/${partner.type}">删除</a></td>
 						</tr>
 				  </c:forEach>
                
