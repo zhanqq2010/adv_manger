@@ -1,29 +1,23 @@
 package com.adv.manager.po;
 
-public class ChannelProject {
-    private String pid;
+import java.math.BigDecimal;
 
+public class ChannelProject {
     private Integer id;
 
-    private String productpid;
-
-    private String productpname;
-
-    private String productname;
-
-    private String partnername;
+    private String pid;
 
     private String pname;
 
+    private Integer type;
+
+    private String partnerName;
+
+    private Integer status;
+
     private String remark;
 
-    public String getPid() {
-        return pid;
-    }
-
-    public void setPid(String pid) {
-        this.pid = pid == null ? null : pid.trim();
-    }
+    private BigDecimal newUserDeduct;
 
     public Integer getId() {
         return id;
@@ -33,36 +27,12 @@ public class ChannelProject {
         this.id = id;
     }
 
-    public String getProductpid() {
-        return productpid;
+    public String getPid() {
+        return pid;
     }
 
-    public void setProductpid(String productpid) {
-        this.productpid = productpid == null ? null : productpid.trim();
-    }
-
-    public String getProductpname() {
-        return productpname;
-    }
-
-    public void setProductpname(String productpname) {
-        this.productpname = productpname == null ? null : productpname.trim();
-    }
-
-    public String getProductname() {
-        return productname;
-    }
-
-    public void setProductname(String productname) {
-        this.productname = productname == null ? null : productname.trim();
-    }
-
-    public String getPartnername() {
-        return partnername;
-    }
-
-    public void setPartnername(String partnername) {
-        this.partnername = partnername == null ? null : partnername.trim();
+    public void setPid(String pid) {
+        this.pid = pid == null ? null : pid.trim();
     }
 
     public String getPname() {
@@ -73,11 +43,43 @@ public class ChannelProject {
         this.pname = pname == null ? null : pname.trim();
     }
 
+    public Integer getType() {
+        return type;
+    }
+
+    public void setType(Integer type) {
+        this.type = type;
+    }
+
+    public String getPartnerName() {
+        return partnerName;
+    }
+
+    public void setPartnerName(String partnerName) {
+        this.partnerName = partnerName == null ? null : partnerName.trim();
+    }
+
+    public Integer getStatus() {
+        return status;
+    }
+
+    public void setStatus(Integer status) {
+        this.status = status;
+    }
+
     public String getRemark() {
         return remark;
     }
 
     public void setRemark(String remark) {
         this.remark = remark == null ? null : remark.trim();
+    }
+
+    public BigDecimal getNewUserDeduct() {
+        return newUserDeduct;
+    }
+
+    public void setNewUserDeduct(BigDecimal newUserDeduct) {
+        this.newUserDeduct = newUserDeduct;
     }
 }

@@ -2,140 +2,140 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.adv.manager.mapper.ProductProjectMapper" >
   <resultMap id="BaseResultMap" type="com.adv.manager.po.ProductProject" >
-    <id column="pid" property="pid" jdbcType="VARCHAR" />
-    <result column="id" property="id" jdbcType="INTEGER" />
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="pid" property="pid" jdbcType="VARCHAR" />
     <result column="pname" property="pname" jdbcType="VARCHAR" />
-    <result column="partnername" property="partnername" jdbcType="VARCHAR" />
-    <result column="type" property="type" jdbcType="VARCHAR" />
+    <result column="type" property="type" jdbcType="INTEGER" />
+    <result column="partner_name" property="partnerName" jdbcType="VARCHAR" />
+    <result column="in_price" property="inPrice" jdbcType="DOUBLE" />
+    <result column="status" property="status" jdbcType="INTEGER" />
     <result column="remark" property="remark" jdbcType="VARCHAR" />
-    <result column="appname" property="appname" jdbcType="VARCHAR" />
-    <result column="appversion" property="appversion" jdbcType="VARCHAR" />
-    <result column="url" property="url" jdbcType="VARCHAR" />
+    <result column="money_type" property="moneyType" jdbcType="INTEGER" />
   </resultMap>
   <sql id="Base_Column_List" >
-    pid, id, pname, partnername, type, remark, appname, appversion, url
+    id, pid, pname, type, partner_name, in_price, status, remark, money_type
   </sql>
-  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select 
     <include refid="Base_Column_List" />
     from productproject
-    where pid = #{pid,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
   </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
     delete from productproject
-    where pid = #{pid,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
   </delete>
   <insert id="insert" parameterType="com.adv.manager.po.ProductProject" >
-    insert into productproject (pid, id, pname, 
-      partnername, type, remark, 
-      appname, appversion, url
+    insert into productproject (id, pid, pname, 
+      type, partner_name, in_price, 
+      status, remark, money_type
       )
-    values (#{pid,jdbcType=VARCHAR}, #{id,jdbcType=INTEGER}, #{pname,jdbcType=VARCHAR}, 
-      #{partnername,jdbcType=VARCHAR}, #{type,jdbcType=VARCHAR}, #{remark,jdbcType=VARCHAR}, 
-      #{appname,jdbcType=VARCHAR}, #{appversion,jdbcType=VARCHAR}, #{url,jdbcType=VARCHAR}
+    values (#{id,jdbcType=INTEGER}, #{pid,jdbcType=VARCHAR}, #{pname,jdbcType=VARCHAR}, 
+      #{type,jdbcType=INTEGER}, #{partnerName,jdbcType=VARCHAR}, #{inPrice,jdbcType=DOUBLE}, 
+      #{status,jdbcType=INTEGER}, #{remark,jdbcType=VARCHAR}, #{moneyType,jdbcType=INTEGER}
       )
   </insert>
   <insert id="insertSelective" parameterType="com.adv.manager.po.ProductProject" >
     insert into productproject
     <trim prefix="(" suffix=")" suffixOverrides="," >
-      <if test="pid != null" >
-        pid,
-      </if>
       <if test="id != null" >
         id,
+      </if>
+      <if test="pid != null" >
+        pid,
       </if>
       <if test="pname != null" >
         pname,
       </if>
-      <if test="partnername != null" >
-        partnername,
-      </if>
       <if test="type != null" >
         type,
+      </if>
+      <if test="partnerName != null" >
+        partner_name,
+      </if>
+      <if test="inPrice != null" >
+        in_price,
+      </if>
+      <if test="status != null" >
+        status,
       </if>
       <if test="remark != null" >
         remark,
       </if>
-      <if test="appname != null" >
-        appname,
-      </if>
-      <if test="appversion != null" >
-        appversion,
-      </if>
-      <if test="url != null" >
-        url,
+      <if test="moneyType != null" >
+        money_type,
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
-      <if test="pid != null" >
-        #{pid,jdbcType=VARCHAR},
-      </if>
       <if test="id != null" >
         #{id,jdbcType=INTEGER},
+      </if>
+      <if test="pid != null" >
+        #{pid,jdbcType=VARCHAR},
       </if>
       <if test="pname != null" >
         #{pname,jdbcType=VARCHAR},
       </if>
-      <if test="partnername != null" >
-        #{partnername,jdbcType=VARCHAR},
-      </if>
       <if test="type != null" >
-        #{type,jdbcType=VARCHAR},
+        #{type,jdbcType=INTEGER},
+      </if>
+      <if test="partnerName != null" >
+        #{partnerName,jdbcType=VARCHAR},
+      </if>
+      <if test="inPrice != null" >
+        #{inPrice,jdbcType=DOUBLE},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=INTEGER},
       </if>
       <if test="remark != null" >
         #{remark,jdbcType=VARCHAR},
       </if>
-      <if test="appname != null" >
-        #{appname,jdbcType=VARCHAR},
-      </if>
-      <if test="appversion != null" >
-        #{appversion,jdbcType=VARCHAR},
-      </if>
-      <if test="url != null" >
-        #{url,jdbcType=VARCHAR},
+      <if test="moneyType != null" >
+        #{moneyType,jdbcType=INTEGER},
       </if>
     </trim>
   </insert>
   <update id="updateByPrimaryKeySelective" parameterType="com.adv.manager.po.ProductProject" >
     update productproject
     <set >
-      <if test="id != null" >
-        id = #{id,jdbcType=INTEGER},
+      <if test="pid != null" >
+        pid = #{pid,jdbcType=VARCHAR},
       </if>
       <if test="pname != null" >
         pname = #{pname,jdbcType=VARCHAR},
       </if>
-      <if test="partnername != null" >
-        partnername = #{partnername,jdbcType=VARCHAR},
-      </if>
       <if test="type != null" >
-        type = #{type,jdbcType=VARCHAR},
+        type = #{type,jdbcType=INTEGER},
+      </if>
+      <if test="partnerName != null" >
+        partner_name = #{partnerName,jdbcType=VARCHAR},
+      </if>
+      <if test="inPrice != null" >
+        in_price = #{inPrice,jdbcType=DOUBLE},
+      </if>
+      <if test="status != null" >
+        status = #{status,jdbcType=INTEGER},
       </if>
       <if test="remark != null" >
         remark = #{remark,jdbcType=VARCHAR},
       </if>
-      <if test="appname != null" >
-        appname = #{appname,jdbcType=VARCHAR},
-      </if>
-      <if test="appversion != null" >
-        appversion = #{appversion,jdbcType=VARCHAR},
-      </if>
-      <if test="url != null" >
-        url = #{url,jdbcType=VARCHAR},
+      <if test="moneyType != null" >
+        money_type = #{moneyType,jdbcType=INTEGER},
       </if>
     </set>
-    where pid = #{pid,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
   </update>
   <update id="updateByPrimaryKey" parameterType="com.adv.manager.po.ProductProject" >
     update productproject
-    set id = #{id,jdbcType=INTEGER},
+    set pid = #{pid,jdbcType=VARCHAR},
       pname = #{pname,jdbcType=VARCHAR},
-      partnername = #{partnername,jdbcType=VARCHAR},
-      type = #{type,jdbcType=VARCHAR},
+      type = #{type,jdbcType=INTEGER},
+      partner_name = #{partnerName,jdbcType=VARCHAR},
+      in_price = #{inPrice,jdbcType=DOUBLE},
+      status = #{status,jdbcType=INTEGER},
       remark = #{remark,jdbcType=VARCHAR},
-      appname = #{appname,jdbcType=VARCHAR},
-      appversion = #{appversion,jdbcType=VARCHAR},
-      url = #{url,jdbcType=VARCHAR}
-    where pid = #{pid,jdbcType=VARCHAR}
+      money_type = #{moneyType,jdbcType=INTEGER}
+    where id = #{id,jdbcType=INTEGER}
   </update>
 </mapper>

@@ -6,4 +6,8 @@ import com.adv.manager.po.ProductProject;
 
 public interface ProductProjectsCustomMapper {
 	 List<ProductProject> queryProductProjectsByUsername(String username);
+
+	ProductProject selectByPid(String pid);
+
+	void delProductProjectByPid(String pid);
 }

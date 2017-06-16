@@ -30,6 +30,13 @@ public interface ProjectService {
 	 * @throws Exception
 	 */
 	public int addProductProject(ProductProject project)  throws Exception;
+	
+	/**
+	 * 
+	 * @param project
+	 * @throws Exception
+	 */
+	public void delProductProjectByPid(String pid)  throws Exception;
 	/**
 	 * 根据渠道商的登录名添加项目
 	 * @param username 登录名

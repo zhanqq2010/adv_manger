@@ -16,6 +16,10 @@
   
     <link rel="stylesheet" href="${pageContext.request.contextPath}/static/js/data-tables/DT_bootstrap.css" />
 
+<!-- velocity 弹出框模块 start -->
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/static/js/jQueryVelocity/css/style.css">
+
+<!-- velocity 弹出框模块  end-->
 
   <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
   <!--[if lt IE 9]>
@@ -66,7 +70,7 @@
                 <div class="adv-table editable-table ">
                 <div class="clearfix">
                     <div class="btn-group">
-                      <a href="${pageContext.request.contextPath}/project/goAddProductProject/${partnerUsername}" class="btn btn-primary"><i class="glyphicon glyphicon-plus"></i> 添加项目 </a>
+                      <a href="${pageContext.request.contextPath}/project/goAddProductProject/${partnerName}" class="btn btn-primary"><i class="glyphicon glyphicon-plus"></i> 添加项目 </a>
                     </div>
                     <div class="btn-group pull-right">
                         <button class="btn btn-default dropdown-toggle" data-toggle="dropdown">工具 <i class="fa fa-angle-down"></i>
@@ -79,29 +83,48 @@
                     </div>
                 </div>
                 <div class="space15"></div>
-                <table class="table table-striped table-hover table-bordered" id="editable-sample">
+                   <table class="table table-striped table-hover table-bordered" id="editable-sample">
                 <thead>
                 <tr>
                     <th class="col-lg-1 col-xs-1">项目ID</th>
                     <th class="col-lg-1 col-xs-1">名称</th>
-                    <th class="col-lg-1 col-xs-1">apk名称</th>
-                    <th class="col-lg-1 col-xs-1">下载地址</th>
+                    <th class="col-lg-1 col-xs-1">计费方式</th>
+                    <th class="col-lg-1 col-xs-1">接入价格</th>
                     <th class="col-lg-1 col-xs-1">备注</th>
-                    <th class="col-lg-1 col-xs-1">操作</th>
+                    <th class="col-lg-1 col-xs-1">编辑</th>
+                    <th class="col-lg-1 col-xs-1">删除</th>
                 </tr>
                 </thead>
                 <tbody>
-	              <c:forEach var="partner" items="${partners}">
+	              <c:forEach var="productProject" items="${productProjects}">
 						<tr class="">
 					        <td>${ productProject.pid}</td>
 				       	    <td>${ productProject.pname}</td>
-							<td>${ productProject.appname}</td>
-        					<td>${ productProject.url}</td>	
+							<td>${ productProject.type}</td>
+        					<td>${ productProject.inPrice}</td>	
         					<td><textarea name="remark" rows="1" class="textareaDisEdit" readonly="readonly">${productProject.remark}</textarea> </td>
 							<td><a
-								href="${pageContext.request.contextPath}/project/goProject/${partner.username}/${partner.type}">项目管理</a></td>
-							<td><a
-								href="#">删除</a></td>
+								href="${pageContext.request.contextPath}/project/goProject/${partner.username}/${partner.type}">编辑</a></td>
+							<td><a class="delete" href="#myModal15" role="button" class="btn btn-default" data-toggle="modal">删除</a></td>
+					      <div id="myModal15" class="modal" data-easein="bounceRightIn" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+					        <form action="${pageContext.request.contextPath}/project/delProductProject/${productProject.partnerName}/${productProject.pid}">
+					        <div class="modal-dialog">
+					          <div class="modal-content">
+					            <div class="modal-header">
+					              <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+					              <h4 class="modal-title">删除</h4>
+					            </div>
+					            <div class="modal-body">
+					              <p>确定这样做吗？</p>
+					            </div>
+					            <div class="modal-footer">
+					              <button class="btn btn-default" data-dismiss="modal" aria-hidden="true">取消</button>
+					              <button class="btn btn-primary" type="submit">确定</button>
+					            </div>
+					          </div>
+					        </div>
+					      </div>
+						</form>
 						</tr>
 				  </c:forEach>
                
@@ -143,11 +166,67 @@
 
 <!--script for editable table-->
 <script src="${pageContext.request.contextPath}/static/js/editable-table.js"></script>
-
+<!--common scripts for all pages-->
+<script src="${pageContext.request.contextPath}/static/js/scripts.js"></script>
 <script>
     jQuery(document).ready(function() {
         EditableTable.init();
+        
     });
 </script>
+
+<!-- velocity 弹出框模块 start -->
+<script src="http://www.jq22.com/jquery/jquery-1.10.2.js"></script>
+<script src="http://www.jq22.com/jquery/bootstrap-3.3.4.js"></script>
+<script src='${pageContext.request.contextPath}/static/js/jQueryVelocity/js/velocity.min.js'></script> 
+<script src='${pageContext.request.contextPath}/static/js/jQueryVelocity/js/velocity.ui.min.js'></script> 
+<script type="text/javascript">
+		// add the animation to the popover
+		$('a[rel=popover]').popover().click(function(e) {
+		  e.preventDefault();
+		  var open = $(this).attr('data-easein');
+		  if (open == 'shake') {
+		    $(this).next().velocity('callout.' + open);
+		  } else if (open == 'pulse') {
+		    $(this).next().velocity('callout.' + open);
+		  } else if (open == 'tada') {
+		    $(this).next().velocity('callout.' + open);
+		  } else if (open == 'flash') {
+		    $(this).next().velocity('callout.' + open);
+		  } else if (open == 'bounce') {
+		    $(this).next().velocity('callout.' + open);
+		  } else if (open == 'swing') {
+		    $(this).next().velocity('callout.' + open);
+		  } else {
+		    $(this).next().velocity('transition.' + open);
+		  }
+
+		});
+
+		// add the animation to the modal
+		$(".modal").each(function(index) {
+		  $(this).on('show.bs.modal', function(e) {
+		    var open = $(this).attr('data-easein');
+		    if (open == 'shake') {
+		      $('.modal-dialog').velocity('callout.' + open);
+		    } else if (open == 'pulse') {
+		      $('.modal-dialog').velocity('callout.' + open);
+		    } else if (open == 'tada') {
+		      $('.modal-dialog').velocity('callout.' + open);
+		    } else if (open == 'flash') {
+		      $('.modal-dialog').velocity('callout.' + open);
+		    } else if (open == 'bounce') {
+		      $('.modal-dialog').velocity('callout.' + open);
+		    } else if (open == 'swing') {
+		      $('.modal-dialog').velocity('callout.' + open);
+		    } else {
+		      $('.modal-dialog').velocity('transition.' + open);
+		    }
+
+		  });
+		});
+	</script>
+
+<!-- velocity 弹出框模块 end -->
 </body>
 </html>

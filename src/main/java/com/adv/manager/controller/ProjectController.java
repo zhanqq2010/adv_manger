@@ -19,7 +19,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.adv.manager.exception.CustomException;
 import com.adv.manager.po.ChannelProject;
-import com.adv.manager.po.PartnerCustom;
+import com.adv.manager.po.Partner;
 import com.adv.manager.po.ProductProject;
 import com.adv.manager.service.PartnerService;
 import com.adv.manager.service.ProjectService;
@@ -45,18 +45,18 @@ public class ProjectController {
 	private String saveIconUrl;
 	
 
-	@RequestMapping("/goProject/{partnerUsername}/{type}")
-	public String goProject(@PathVariable("partnerUsername") String partnerUsername,
+	@RequestMapping("/goProject/{partnerName}/{type}")
+	public String goProject(@PathVariable("partnerName") String partnerName,
 			@PathVariable("type") Integer type, Model model) throws Exception {
-		model.addAttribute("partnerUsername", partnerUsername);
+		model.addAttribute("partnerName", partnerName);
 		if (type == 1) {
 			model.addAttribute("typeDescription","手机渠道商");
-			List<ChannelProject> channelProjects = service.queryChannelProjects(partnerUsername);
+			List<ChannelProject> channelProjects = service.queryChannelProjects(partnerName);
 			model.addAttribute("channelProjects", channelProjects);
 			return "project/channelProject";
 		} else if (type == 2) {
 			model.addAttribute("typeDescription","广告厂商");
-			List<ProductProject> productProjects = service.queryProductProjects(partnerUsername);
+			List<ProductProject> productProjects = service.queryProductProjects(partnerName);
 			model.addAttribute("productProjects", productProjects);
 			return "project/productProject";
 		}
@@ -64,20 +64,20 @@ public class ProjectController {
 		return "home";
 	}
 
-	@RequestMapping("/goAddProductProject/{partnerUsername}")
-	public String goAddProductProject(@PathVariable("partnerUsername") String partnerUsername, Model model) throws Exception{
+	@RequestMapping("/goAddProductProject/{partnerName}")
+	public String goAddProductProject(@PathVariable("partnerName") String partnerName, Model model) throws Exception{
 		String pid = CommonUtil.createPid();
 		model.addAttribute("pid", pid);
-		model.addAttribute("partnerUsername", partnerUsername);
+		model.addAttribute("partnerName", partnerName);
 		return "project/addProductProject";
 	}
 
-	@RequestMapping("/goAddChannelProject/{partnerUsername}")
-	public String goAddChannelProject(@PathVariable("partnerUsername") String partnerUsername, Model model) throws Exception{
+	@RequestMapping("/goAddChannelProject/{partnerName}")
+	public String goAddChannelProject(@PathVariable("partnerName") String partnerName, Model model) throws Exception{
 		String pid = CommonUtil.createPid();
-		List<PartnerCustom> products = partnerService.queryPartnerCustom(2);
+		List<Partner> products = partnerService.queryPartnersByType(2);
 		model.addAttribute("pid", pid);
-		model.addAttribute("partnerUsername", partnerUsername);
+		model.addAttribute("partnerName", partnerName);
 		if(products != null){
 			model.addAttribute("products", products);
 		}
@@ -90,35 +90,41 @@ public class ProjectController {
 	 * @return
 	 * @throws Exception
 	 */
-	@RequestMapping("/createChannelProject/{partnerUsername}")
-	public String createChannelProject(@PathVariable("partnerUsername")String partnerUsername, ChannelProject project) throws Exception{
+	@RequestMapping("/createChannelProject/{partnerName}")
+	public String createChannelProject(@PathVariable("partnerName")String partnerName, ChannelProject project) throws Exception{
 		int i = service.addChannelProject(project);
 		if(i < 0){
 			throw new CustomException("项目已经存在");
 		}
-		return "redirect:/project/goProject/" + partnerUsername + "/1";
+		return "redirect:/project/goProject/" + partnerName + "/1";
 	}
 	
-	@RequestMapping("/createProductProject/{partnerUsername}")
-	public String createProductProject(@PathVariable("partnerUsername")String partnerUsername, ProductProject project) throws Exception{
-
+	@RequestMapping("/createProductProject/{partnerName}")
+	public String createProductProject(@PathVariable("partnerName")String partnerName, ProductProject project) throws Exception{
 		int addProductProject = service.addProductProject(project);
-		
-		return "redirect:/project/goProject/" + partnerUsername + "/2";
+		return "redirect:/project/goProject/" + partnerName + "/2";
 	}
 	
-	@RequestMapping("/updateChannelProject/{partnerUsername}/{pid}")
-	public String updateChannelProject(@PathVariable("partnerUsername")String partnerUsername,@PathVariable("pid")String pid, ChannelProject project) throws Exception{
+	@RequestMapping("/delProductProject/{partnerName}/{pid}")
+	public String delProductProjectByPid(@PathVariable("partnerName")String partnerName, @PathVariable("pid")String pid) throws Exception{
+		service.delProductProjectByPid(pid);
+		return "redirect:/project/goProject/" + partnerName + "/2";
+	}
+	
+	
+	
+	@RequestMapping("/updateChannelProject/{partnerName}/{pid}")
+	public String updateChannelProject(@PathVariable("partnerName")String partnerName,@PathVariable("pid")String pid, ChannelProject project) throws Exception{
 		service.updateChannelProject(pid, project);
-		return "redirect:/project/goProject/" + partnerUsername + "/1";
+		return "redirect:/project/goProject/" + partnerName + "/1";
 	}
 	
 
 
-	@RequestMapping("/updateProductProject/{partnerUsername}/{pid}")
-	public String updateProductProject(@PathVariable("username")String partnerUsername,@PathVariable("pid")String pid, ProductProject project) throws Exception{
+	@RequestMapping("/updateProductProject/{partnerName}/{pid}")
+	public String updateProductProject(@PathVariable("username")String partnerName,@PathVariable("pid")String pid, ProductProject project) throws Exception{
 		service.updateProductProject(pid, project);
-		return "redirect:/project/goProject/" + partnerUsername + "/2";
+		return "redirect:/project/goProject/" + partnerName + "/2";
 	}
 	
 
@@ -131,8 +137,8 @@ public class ProjectController {
 	 */
 	@RequestMapping("/createDownloadUrl")
 	public String createDownloadUrl(Model model) throws Exception{
-		List<PartnerCustom> products = partnerService.queryPartnerCustom(2);
-		List<PartnerCustom> channels = partnerService.queryPartnerCustom(1);
+		List<Partner> products = partnerService.queryPartnersByType(2);
+		List<Partner> channels = partnerService.queryPartnersByType(1);
 		if(products != null && products.size() > 0){
 			model.addAttribute("products", products);
 		}
@@ -205,7 +211,7 @@ public class ProjectController {
 	@RequestMapping("/goEditChannelProject/{pid}/{username}")
 	public String goEditChannelProject(@PathVariable("pid") String pid ,@PathVariable("username") String username ,Model model) throws Exception{
 		ChannelProject project = service.queryChannelProject(pid);
-		List<PartnerCustom> products = partnerService.queryPartnerCustom(2);
+		List<Partner> products = partnerService.queryPartnersByType(2);
 		model.addAttribute("username", username);
 		if(project != null){
 			model.addAttribute("project", project);

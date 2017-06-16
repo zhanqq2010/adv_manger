@@ -8,7 +8,6 @@ import org.springframework.stereotype.Service;
 import com.adv.manager.mapper.PartnerCustomMapper;
 import com.adv.manager.mapper.PartnerMapper;
 import com.adv.manager.po.Partner;
-import com.adv.manager.po.PartnerCustom;
 import com.adv.manager.service.PartnerService;
 
 @Service
@@ -18,9 +17,10 @@ public class PartnerServiceImpl implements PartnerService {
 	@Autowired PartnerMapper partnerMapper;
 	
 	@Override
-	public List<PartnerCustom> queryPartnerCustom(int type) throws Exception {
-		return partnerCustomMapper.queryPartnerCustom(type);
+	public List<Partner> queryPartnersByType(int type) throws Exception {
+		return partnerCustomMapper.queryPartnersByType(type);
 	}
+	
 
 	@Override
 	public int addPartner(Partner partner) throws Exception {
@@ -46,6 +46,9 @@ public class PartnerServiceImpl implements PartnerService {
 	public void delPartnerByUsername(String partnerUsername) {
 		partnerCustomMapper.delPartnerByUsername(partnerUsername);
 	}
+
+
+
 	
 	
 	

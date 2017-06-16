@@ -1,5 +1,7 @@
 package com.adv.manager.po;
 
+import java.util.Date;
+
 public class User {
     private String username;
 
@@ -9,15 +11,17 @@ public class User {
 
     private String name;
 
-    private Integer parentid;
+    private Integer parentId;
 
-    private String lastloginip;
+    private String lastLoginIp;
 
-    private String lastlogintime;
+    private String lastLoginTime;
 
     private Integer state;
 
-    private Integer partnerid;
+    private Integer partnerName;
+
+    private Date addTime;
 
     public String getUsername() {
         return username;
@@ -51,28 +55,28 @@ public class User {
         this.name = name == null ? null : name.trim();
     }
 
-    public Integer getParentid() {
-        return parentid;
+    public Integer getParentId() {
+        return parentId;
     }
 
-    public void setParentid(Integer parentid) {
-        this.parentid = parentid;
+    public void setParentId(Integer parentId) {
+        this.parentId = parentId;
     }
 
-    public String getLastloginip() {
-        return lastloginip;
+    public String getLastLoginIp() {
+        return lastLoginIp;
     }
 
-    public void setLastloginip(String lastloginip) {
-        this.lastloginip = lastloginip == null ? null : lastloginip.trim();
+    public void setLastLoginIp(String lastLoginIp) {
+        this.lastLoginIp = lastLoginIp == null ? null : lastLoginIp.trim();
     }
 
-    public String getLastlogintime() {
-        return lastlogintime;
+    public String getLastLoginTime() {
+        return lastLoginTime;
     }
 
-    public void setLastlogintime(String lastlogintime) {
-        this.lastlogintime = lastlogintime == null ? null : lastlogintime.trim();
+    public void setLastLoginTime(String lastLoginTime) {
+        this.lastLoginTime = lastLoginTime == null ? null : lastLoginTime.trim();
     }
 
     public Integer getState() {
@@ -83,11 +87,19 @@ public class User {
         this.state = state;
     }
 
-    public Integer getPartnerid() {
-        return partnerid;
+    public Integer getPartnerName() {
+        return partnerName;
     }
 
-    public void setPartnerid(Integer partnerid) {
-        this.partnerid = partnerid;
+    public void setPartnerName(Integer partnerName) {
+        this.partnerName = partnerName;
+    }
+
+    public Date getAddTime() {
+        return addTime;
+    }
+
+    public void setAddTime(Date addTime) {
+        this.addTime = addTime;
     }
 }

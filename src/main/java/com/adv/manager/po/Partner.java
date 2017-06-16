@@ -11,9 +11,11 @@ public class Partner {
 
     private String address;
 
-    private String datasyncaddress;
+    private String dataSyncAddress;
 
     private String nickname;
+
+    private String typeDescription;
 
     private String email;
 
@@ -25,7 +27,7 @@ public class Partner {
 
     private Integer status;
 
-    private Date createtime;
+    private Date createTime;
 
     private String remark;
 
@@ -61,12 +63,12 @@ public class Partner {
         this.address = address == null ? null : address.trim();
     }
 
-    public String getDatasyncaddress() {
-        return datasyncaddress;
+    public String getDataSyncAddress() {
+        return dataSyncAddress;
     }
 
-    public void setDatasyncaddress(String datasyncaddress) {
-        this.datasyncaddress = datasyncaddress == null ? null : datasyncaddress.trim();
+    public void setDataSyncAddress(String dataSyncAddress) {
+        this.dataSyncAddress = dataSyncAddress == null ? null : dataSyncAddress.trim();
     }
 
     public String getNickname() {
@@ -75,6 +77,14 @@ public class Partner {
 
     public void setNickname(String nickname) {
         this.nickname = nickname == null ? null : nickname.trim();
+    }
+
+    public String getTypeDescription() {
+        return typeDescription;
+    }
+
+    public void setTypeDescription(String typeDescription) {
+        this.typeDescription = typeDescription == null ? null : typeDescription.trim();
     }
 
     public String getEmail() {
@@ -117,12 +127,12 @@ public class Partner {
         this.status = status;
     }
 
-    public Date getCreatetime() {
-        return createtime;
+    public Date getCreateTime() {
+        return createTime;
     }
 
-    public void setCreatetime(Date createtime) {
-        this.createtime = createtime;
+    public void setCreateTime(Date createTime) {
+        this.createTime = createTime;
     }
 
     public String getRemark() {

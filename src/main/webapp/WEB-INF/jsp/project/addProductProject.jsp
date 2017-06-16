@@ -53,87 +53,57 @@
                 <div class="col-lg-12">
                     <section class="panel">
                         <header class="panel-heading">
-                        	  添加${typeDescription}
+                        	  添加广告厂商项目
                         </header>
                         <div class="panel-body">
                             <div class="form">
-                                <form class="cmxform form-horizontal adminex-form" id="signupForm" method="post" action="${pageContext.request.contextPath}/partner/createPartner">
+                                <form class="cmxform form-horizontal adminex-form" id="signupForm" method="post" action="${pageContext.request.contextPath}/project/createProductProject/${partnerName}">
                                   	<!-- 厂商的操作类型 -->
-                                  <div class="form-group ">
-                                        <label for="password" class="control-label col-lg-2">类型:</label>
-                                        <div class="col-lg-3">
-                                             <select class="form-control m-bot15">
-				                                <option>通知栏点击下载apk</option>
-				                                <option>通知栏点击跳转url</option>
-				                                <option>弹窗点击下载pk</option>
-				                                <option>弹窗点击跳转url</option>
-				                                <option>静默apk</option>
-				                                <option>静默url</option>
-				                            </select>
-	                                        </div>
-	                               </div>
+                        
                                     <div class="form-group ">
                                         <label for="firstname" class="control-label col-lg-2"><label >项目id:</label></label>
                                         <div class="col-lg-3">
- 											<input class="form-control"  type="text" placeholder="${typeDescription}" disabled>
-                                        	<input name="type" value="${type}" type="hidden">
+ 											<input class="form-control"  type="text" placeholder="${pid}" disabled>
+                                        	<input name="pid" value="${pid}" type="hidden">
                                         </div>
                                     </div>
+                                        	<input name="partnerName" value="${partnerName}" type="hidden">
+                                    
                                     <div class="form-group ">
                                         <label for="lastname" class="control-label col-lg-2"><label>项目名称:</label></label>
                                         <div class="col-lg-3">
-                                            <input class=" form-control" id="nickname" name="nickname" type="text"" />
+                                            <input class=" form-control" id="pname" name="pname" type="text"" required />
                                         </div>
                                     </div>
-                                    <div class="form-group ">
-                                        <label for="username" class="control-label col-lg-2">广告厂商名称:</label>
-                                        <div class="col-lg-3">
-                                            <input class="form-control" name="username"  type="text"  />
-                                        </div>
-                                    </div>
+                            
                                    
-                                    <div class="form-group ">
-                                        <label for="confirm_password" class="control-label col-lg-2">上传apk:</label>
+                                             <div class="form-group ">
+                                        <label for="password" class="control-label col-lg-2">类型:</label>
                                         <div class="col-lg-3">
-                                            <input class="form-control " id="address" name="address" type="file" />
+                                             <select class="form-control m-bot15" name="type">
+				                                <option value="1">CPC(按点击量)</option>
+				                                <option value="2">CPA(按激活量)</option>
+				                                <option value="3">CPS(按安装量)</option>
+				                            </select>
+	                                        </div>
+	                               </div>
+                                   
+                                    
+                                    <div class="form-group form-inline">
+                                        <label for="confirm_password " class="control-label col-lg-2">接入价格:</label>
+                                        <div class="col-lg-3">
+                                           <input class="form-control col-lg-2" id="inprice" name="inPrice" type="text" required />
+                                          <select class="form-control col-lg-1" name="moneyType">
+				                                <option value="1">元</option>
+				                                <option value="2">美元</option>
+				                            </select>
+                                         
+                                          
                                         </div>
                                     </div>
-                                    <div class="form-group ">
-                                        <label for="confirm_password" class="control-label col-lg-2">apk名称:</label>
-                                        <div class="col-lg-3">
-                                            <input class="form-control " id="phoneNo" name="phoneNo" type="text"  />
-                                        </div>
-                                    </div>
-                                    <div class="form-group ">
-                                        <label for="confirm_password" class="control-label col-lg-2">apk图标:</label>
-                                        <div class="col-lg-3">
-                                            <input class="form-control " id="qqNo" name="qqNo" type="text" " />
-                                        </div>
-                                    </div>
-                                    <div class="form-group ">
-                                        <label for="email" class="control-label col-lg-2">apk大小:</label>
-                                        <div class="col-lg-3">
-                                            <input class="form-control " id="email" name="email" type="text"  />
-                                        </div>
-                                    </div>
-                                    <div class="form-group ">
-                                        <label for="email" class="control-label col-lg-2">链接地址:</label>
-                                        <div class="col-lg-3">
-                                            <input class="form-control " id="email" name="email" type="text"  />
-                                        </div>
-                                    </div>
-                                    <div class="form-group ">
-                                        <label for="email" class="control-label col-lg-2">包名:</label>
-                                        <div class="col-lg-3">
-                                            <input class="form-control " id="email" name="email" type="text"  />
-                                        </div>
-                                    </div>
-                                    <div class="form-group ">
-                                        <label for="email" class="control-label col-lg-2">apk版本号:</label>
-                                        <div class="col-lg-3">
-                                            <input class="form-control " id="email" name="email" type="text"  />
-                                        </div>
-                                    </div>
+                      
+                         
+                                  
 									<div class="form-group">
 										<label class="control-label col-lg-2">备注:</label>
 										<div class="col-lg-3">

@@ -2,127 +2,127 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.adv.manager.mapper.ChannelProjectMapper" >
   <resultMap id="BaseResultMap" type="com.adv.manager.po.ChannelProject" >
-    <id column="pid" property="pid" jdbcType="VARCHAR" />
-    <result column="id" property="id" jdbcType="INTEGER" />
-    <result column="productpid" property="productpid" jdbcType="VARCHAR" />
-    <result column="productpname" property="productpname" jdbcType="VARCHAR" />
-    <result column="productname" property="productname" jdbcType="VARCHAR" />
-    <result column="partnername" property="partnername" jdbcType="VARCHAR" />
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="pid" property="pid" jdbcType="VARCHAR" />
     <result column="pname" property="pname" jdbcType="VARCHAR" />
+    <result column="type" property="type" jdbcType="INTEGER" />
+    <result column="partner_name" property="partnerName" jdbcType="VARCHAR" />
+    <result column="status" property="status" jdbcType="INTEGER" />
     <result column="remark" property="remark" jdbcType="VARCHAR" />
+    <result column="new_user_deduct" property="newUserDeduct" jdbcType="DECIMAL" />
   </resultMap>
   <sql id="Base_Column_List" >
-    pid, id, productpid, productpname, productname, partnername, pname, remark
+    id, pid, pname, type, partner_name, status, remark, new_user_deduct
   </sql>
-  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select 
     <include refid="Base_Column_List" />
     from channelproject
-    where pid = #{pid,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
   </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
     delete from channelproject
-    where pid = #{pid,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
   </delete>
   <insert id="insert" parameterType="com.adv.manager.po.ChannelProject" >
-    insert into channelproject (pid, id, productpid, 
-      productpname, productname, partnername, 
-      pname, remark)
-    values (#{pid,jdbcType=VARCHAR}, #{id,jdbcType=INTEGER}, #{productpid,jdbcType=VARCHAR}, 
-      #{productpname,jdbcType=VARCHAR}, #{productname,jdbcType=VARCHAR}, #{partnername,jdbcType=VARCHAR}, 
-      #{pname,jdbcType=VARCHAR}, #{remark,jdbcType=VARCHAR})
+    insert into channelproject (id, pid, pname, 
+      type, partner_name, status, 
+      remark, new_user_deduct)
+    values (#{id,jdbcType=INTEGER}, #{pid,jdbcType=VARCHAR}, #{pname,jdbcType=VARCHAR}, 
+      #{type,jdbcType=INTEGER}, #{partnerName,jdbcType=VARCHAR}, #{status,jdbcType=INTEGER}, 
+      #{remark,jdbcType=VARCHAR}, #{newUserDeduct,jdbcType=DECIMAL})
   </insert>
   <insert id="insertSelective" parameterType="com.adv.manager.po.ChannelProject" >
     insert into channelproject
     <trim prefix="(" suffix=")" suffixOverrides="," >
-      <if test="pid != null" >
-        pid,
-      </if>
       <if test="id != null" >
         id,
       </if>
-      <if test="productpid != null" >
-        productpid,
-      </if>
-      <if test="productpname != null" >
-        productpname,
-      </if>
-      <if test="productname != null" >
-        productname,
-      </if>
-      <if test="partnername != null" >
-        partnername,
+      <if test="pid != null" >
+        pid,
       </if>
       <if test="pname != null" >
         pname,
       </if>
+      <if test="type != null" >
+        type,
+      </if>
+      <if test="partnerName != null" >
+        partner_name,
+      </if>
+      <if test="status != null" >
+        status,
+      </if>
       <if test="remark != null" >
         remark,
       </if>
+      <if test="newUserDeduct != null" >
+        new_user_deduct,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
-      <if test="pid != null" >
-        #{pid,jdbcType=VARCHAR},
-      </if>
       <if test="id != null" >
         #{id,jdbcType=INTEGER},
       </if>
-      <if test="productpid != null" >
-        #{productpid,jdbcType=VARCHAR},
-      </if>
-      <if test="productpname != null" >
-        #{productpname,jdbcType=VARCHAR},
-      </if>
-      <if test="productname != null" >
-        #{productname,jdbcType=VARCHAR},
-      </if>
-      <if test="partnername != null" >
-        #{partnername,jdbcType=VARCHAR},
+      <if test="pid != null" >
+        #{pid,jdbcType=VARCHAR},
       </if>
       <if test="pname != null" >
         #{pname,jdbcType=VARCHAR},
       </if>
+      <if test="type != null" >
+        #{type,jdbcType=INTEGER},
+      </if>
+      <if test="partnerName != null" >
+        #{partnerName,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=INTEGER},
+      </if>
       <if test="remark != null" >
         #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="newUserDeduct != null" >
+        #{newUserDeduct,jdbcType=DECIMAL},
       </if>
     </trim>
   </insert>
   <update id="updateByPrimaryKeySelective" parameterType="com.adv.manager.po.ChannelProject" >
     update channelproject
     <set >
-      <if test="id != null" >
-        id = #{id,jdbcType=INTEGER},
-      </if>
-      <if test="productpid != null" >
-        productpid = #{productpid,jdbcType=VARCHAR},
-      </if>
-      <if test="productpname != null" >
-        productpname = #{productpname,jdbcType=VARCHAR},
-      </if>
-      <if test="productname != null" >
-        productname = #{productname,jdbcType=VARCHAR},
-      </if>
-      <if test="partnername != null" >
-        partnername = #{partnername,jdbcType=VARCHAR},
+      <if test="pid != null" >
+        pid = #{pid,jdbcType=VARCHAR},
       </if>
       <if test="pname != null" >
         pname = #{pname,jdbcType=VARCHAR},
       </if>
+      <if test="type != null" >
+        type = #{type,jdbcType=INTEGER},
+      </if>
+      <if test="partnerName != null" >
+        partner_name = #{partnerName,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null" >
+        status = #{status,jdbcType=INTEGER},
+      </if>
       <if test="remark != null" >
         remark = #{remark,jdbcType=VARCHAR},
       </if>
+      <if test="newUserDeduct != null" >
+        new_user_deduct = #{newUserDeduct,jdbcType=DECIMAL},
+      </if>
     </set>
-    where pid = #{pid,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
   </update>
   <update id="updateByPrimaryKey" parameterType="com.adv.manager.po.ChannelProject" >
     update channelproject
-    set id = #{id,jdbcType=INTEGER},
-      productpid = #{productpid,jdbcType=VARCHAR},
-      productpname = #{productpname,jdbcType=VARCHAR},
-      productname = #{productname,jdbcType=VARCHAR},
-      partnername = #{partnername,jdbcType=VARCHAR},
+    set pid = #{pid,jdbcType=VARCHAR},
       pname = #{pname,jdbcType=VARCHAR},
-      remark = #{remark,jdbcType=VARCHAR}
-    where pid = #{pid,jdbcType=VARCHAR}
+      type = #{type,jdbcType=INTEGER},
+      partner_name = #{partnerName,jdbcType=VARCHAR},
+      status = #{status,jdbcType=INTEGER},
+      remark = #{remark,jdbcType=VARCHAR},
+      new_user_deduct = #{newUserDeduct,jdbcType=DECIMAL}
+    where id = #{id,jdbcType=INTEGER}
   </update>
 </mapper>

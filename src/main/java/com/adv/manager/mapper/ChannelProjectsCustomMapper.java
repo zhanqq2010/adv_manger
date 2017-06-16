@@ -8,4 +8,6 @@ public interface ChannelProjectsCustomMapper {
 
     List<ChannelProject> queryChannelProjectByUsername(String username);
 
+	ChannelProject selectByPid(String pid);
+
 }

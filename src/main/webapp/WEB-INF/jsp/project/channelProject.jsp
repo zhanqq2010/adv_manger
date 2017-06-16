@@ -83,8 +83,6 @@
                 <tr>
                     <th class="col-lg-1 col-xs-1">项目ID</th>
                     <th class="col-lg-1 col-xs-1">名称</th>
-                    <th class="col-lg-1 col-xs-1">广告厂商名称</th>
-                    <th class="col-lg-1 col-xs-1">渠道名称</th>
                     <th class="col-lg-1 col-xs-1">备注</th>
                     <th class="col-lg-1 col-xs-1">操作</th>
                 </tr>
@@ -94,8 +92,6 @@
 						<tr class="">
 					        <td>${ productProject.pid}</td>
 				       	    <td>${ productProject.pname}</td>
-							<td>${ productProject.appname}</td>
-        					<td>${ productProject.url}</td>	
         					<td><textarea name="remark" rows="1" class="textareaDisEdit" readonly="readonly">${productProject.remark}</textarea> </td>
 							<td><a
 								href="${pageContext.request.contextPath}/project/goProject/${partner.username}/${partner.type}">项目管理</a></td>

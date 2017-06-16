@@ -1,6 +1,5 @@
 package com.adv.manager.controller;
 
-import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,7 +9,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.adv.manager.po.Partner;
-import com.adv.manager.po.PartnerCustom;
 import com.adv.manager.service.PartnerService;
 
 @Controller
@@ -21,7 +19,7 @@ public class PartnerController {
 	
 	@RequestMapping("/queryPartnerByType/{type}")
 	public String queryAllProducts(@PathVariable("type") int type ,Model model) throws Exception{
-		List<PartnerCustom> partners = service.queryPartnerCustom(type);
+		List<Partner> partners = service.queryPartnersByType(type);
 		if(partners != null){
 			model.addAttribute("partners", partners);
 			model.addAttribute("type",type);
@@ -81,11 +79,11 @@ public class PartnerController {
 	 * @return
 	 */
 	@RequestMapping("/delPartners/{type}")
-	public String delPartners(@PathVariable("type") String type, String[] partnerUsernames){
+	public String delPartners(@PathVariable("type") String type, String[] partnerNames){
 		
-		if(partnerUsernames != null && partnerUsernames.length > 0){
-			for(String partnerUsername : partnerUsernames){
-				service.delPartnerByUsername(partnerUsername);
+		if(partnerNames != null && partnerNames.length > 0){
+			for(String partnerName : partnerNames){
+				service.delPartnerByUsername(partnerName);
 			}
 		}
 		return "redirect:/partner/queryPartnerByType/" + type;

@@ -3,7 +3,6 @@ package com.adv.manager.service;
 import java.util.List;
 
 import com.adv.manager.po.Partner;
-import com.adv.manager.po.PartnerCustom;
 
 public interface PartnerService {
 
@@ -13,7 +12,7 @@ public interface PartnerService {
 	 * @return
 	 * @throws Exception
 	 */
-	public List<PartnerCustom> queryPartnerCustom(int type) throws Exception;
+	public List<Partner> queryPartnersByType(int type) throws Exception;
 	
 	public int addPartner(Partner partner) throws Exception;
 	

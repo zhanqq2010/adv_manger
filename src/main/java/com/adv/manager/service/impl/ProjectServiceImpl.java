@@ -34,7 +34,6 @@ public class ProjectServiceImpl implements ProjectService {
 	
 	@Override
 	public List<ProductProject> queryProductProjects(String username) throws Exception {
-		List<ProductProject> list = pCustomMapper.queryProductProjectsByUsername(username);
 		return	pCustomMapper.queryProductProjectsByUsername(username);
 	}
 	@Override
@@ -60,12 +59,14 @@ public class ProjectServiceImpl implements ProjectService {
 	
 	@Override
 	public ChannelProject queryChannelProject(String pid) throws Exception {
-		return cMapper.selectByPrimaryKey(pid);
+		return cCustomMapper.selectByPid(pid);
+//		return cMapper.selectByPrimaryKey(pid);
 	}
 	
 	@Override
 	public ProductProject queryProductProject(String pid) throws Exception {
-		return pMapper.selectByPrimaryKey(pid);
+		return pCustomMapper.selectByPid(pid);
+//		return pMapper.selectByPrimaryKey(pid);
 	}
 	@Override
 	public int updateChannelProject(String pid, ChannelProject project)
@@ -92,6 +93,11 @@ public class ProjectServiceImpl implements ProjectService {
 		}
 	
 		return -1;
+	}
+	@Override
+	public void delProductProjectByPid(String pid) throws Exception {
+		pCustomMapper.delProductProjectByPid(pid);
+		
 	}
 	
 	

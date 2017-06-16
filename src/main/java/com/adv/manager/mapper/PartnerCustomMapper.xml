@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.adv.manager.mapper.PartnerCustomMapper" >
  
- 	<select id="queryPartnerCustom" parameterType="int" resultType="com.adv.manager.po.Partner">
+ 	<select id="queryPartnersByType" parameterType="int" resultType="com.adv.manager.po.Partner">
  		SELECT * FROM partner WHERE type = #{type}
  	</select>
  	
