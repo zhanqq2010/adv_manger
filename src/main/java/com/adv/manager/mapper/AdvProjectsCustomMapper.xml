@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.adv.manager.mapper.AdvProjectsCustomMapper" >
+
+  <resultMap id="BaseResultMap" type="com.adv.manager.po.AdvProject" >
+    <id column="pid" property="pid" jdbcType="VARCHAR" />
+    <result column="id" property="id" jdbcType="INTEGER" />
+    <result column="pname" property="pname" jdbcType="VARCHAR" />
+    <result column="type" property="type" jdbcType="INTEGER" />
+    <result column="count" property="count" jdbcType="VARCHAR" />
+    <result column="status" property="status" jdbcType="INTEGER" />
+    <result column="pusherea" property="pusherea" jdbcType="VARCHAR" />
+    <result column="pruduct_pid" property="pruductPid" jdbcType="VARCHAR" />
+    <result column="channel_pid" property="channelPid" jdbcType="VARCHAR" />
+    <result column="url" property="url" jdbcType="VARCHAR" />
+    <result column="pkg" property="pkg" jdbcType="VARCHAR" />
+    <result column="version_code" property="versionCode" jdbcType="VARCHAR" />
+    <result column="version_name" property="versionName" jdbcType="VARCHAR" />
+    <result column="app_size" property="appSize" jdbcType="DOUBLE" />
+    <result column="app_name" property="appName" jdbcType="VARCHAR" />
+    <result column="img_url" property="imgUrl" jdbcType="VARCHAR" />
+    <result column="icon_url" property="iconUrl" jdbcType="VARCHAR" />
+    <result column="add_time" property="addTime" jdbcType="TIMESTAMP" />
+    <result column="remark" property="remark" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    pid, id, pname, type, count, status, pusherea, pruduct_pid, channel_pid, url, pkg, 
+    version_code, version_name, app_size, app_name, img_url, icon_url, add_time, remark
+  </sql>
+
+  	<select id="queryAdvProjects" resultMap="BaseResultMap">
+  		select  
+  		<include refid="Base_Column_List" /> 
+  		FROM adv_project 
+  	</select>
+
+</mapper>
