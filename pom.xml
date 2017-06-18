@@ -117,7 +117,7 @@
 		<dependency>
 			<groupId>org.slf4j</groupId>
 			<artifactId>slf4j-api</artifactId>
-			<version>1.7.5</version>
+			<version>1.5.8</version>
 		</dependency>
 		<dependency>
 			<groupId>org.apache.logging.log4j</groupId>
@@ -127,7 +127,7 @@
 		<dependency>
 			<groupId>org.slf4j</groupId>
 			<artifactId>slf4j-log4j12</artifactId>
-			<version>1.7.5</version>
+			<version>1.5.8</version>
 		</dependency>
 
 		<!-- mybatis-spring 整合 -->
@@ -271,7 +271,56 @@
 			</configuration>
 			<version>2.1.1</version>
 		</dependency> -->
+		
+		<!-- push server lib  start-->
+		
+	<!-- https://mvnrepository.com/artifact/org.apache.mina/mina-core -->
+	<dependency>
+	    <groupId>org.apache.mina</groupId>
+	    <artifactId>mina-core</artifactId>
+	    <version>2.0.0-RC1</version>
+	</dependency>
+	
+	<!-- https://mvnrepository.com/artifact/org.apache.mina/mina-integration-beans -->
+	<dependency>
+	    <groupId>org.apache.mina</groupId>
+	    <artifactId>mina-integration-beans</artifactId>
+	    <version>2.0.0-RC1</version>
+	</dependency>
+		
 
+	<!-- https://mvnrepository.com/artifact/xpp3/xpp3 -->
+	<dependency>
+	    <groupId>xpp3</groupId>
+	    <artifactId>xpp3</artifactId>
+	    <version>1.1.4c</version>
+	</dependency>
+
+	<!-- https://mvnrepository.com/artifact/dom4j/dom4j -->
+	<dependency>
+	    <groupId>dom4j</groupId>
+	    <artifactId>dom4j</artifactId>
+	    <version>1.6.1</version>
+	</dependency>
+	
+	<!-- https://mvnrepository.com/artifact/org.igniterealtime/tinder -->
+	<dependency>
+	    <groupId>org.igniterealtime</groupId>
+	    <artifactId>tinder</artifactId>
+	    <version>1.2.3</version>
+	</dependency>
+	
+	<!-- https://mvnrepository.com/artifact/commons-configuration/commons-configuration -->
+	<dependency>
+	    <groupId>commons-configuration</groupId>
+	    <artifactId>commons-configuration</artifactId>
+	    <version>1.6</version>
+	</dependency>
+
+
+	
+
+	<!-- push server lib  end-->
 	</dependencies>
 
 	<build>
@@ -288,6 +337,12 @@
 				<configuration>
 					<version>3.0</version>
 				</configuration>
+			</plugin>
+			
+			<plugin> 
+			    <groupId>org.apache.felix</groupId> 
+			    <artifactId>maven-bundle-plugin</artifactId> 
+			    <extensions>true</extensions> 
 			</plugin>
 		</plugins>
 	</build>

@@ -130,5 +130,5 @@
 			<bean class="com.adv.manager.interceptor.LoginInterceptor"></bean>
 		</mvc:interceptor>
 	</mvc:interceptors>
-
+	
 </beans>
