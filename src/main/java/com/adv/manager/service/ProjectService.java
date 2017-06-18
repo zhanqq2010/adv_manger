@@ -2,6 +2,7 @@ package com.adv.manager.service;
 
 import java.util.List;
 
+import com.adv.manager.po.AdvProject;
 import com.adv.manager.po.ChannelProject;
 import com.adv.manager.po.ProductProject;
 
@@ -23,6 +24,13 @@ public interface ProjectService {
 	public List<ChannelProject> queryChannelProjects(String username) throws Exception;
 	
 	/**
+	 * 
+	 * @return
+	 * @throws Exception
+	 */
+	public List<AdvProject> queryAdvProjects() throws Exception;
+	
+	/**
 	 *  根据广告厂商的登录名添加项目
 	 * @param username  登录名
 	 * @param project
@@ -30,7 +38,7 @@ public interface ProjectService {
 	 * @throws Exception
 	 */
 	public int addProductProject(ProductProject project)  throws Exception;
-	
+	public int addAdvProject(AdvProject project)  throws Exception;
 	/**
 	 * 
 	 * @param project

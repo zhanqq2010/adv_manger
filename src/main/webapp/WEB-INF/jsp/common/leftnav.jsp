@@ -4,11 +4,11 @@
 
         <!--logo and iconic logo start-->
         <div class="logo">
-            <a href="index.html"><img src="${pageContext.request.contextPath}/static/images/logo.png" alt=""></a>
+            <a href="${pageContext.request.contextPath}/home.jsp"><img src="${pageContext.request.contextPath}/static/images/logo.png" alt=""></a>
         </div>
 
         <div class="logo-icon text-center">
-            <a href="index.html"><img src="${pageContext.request.contextPath}/static/images/logo_icon.png" alt=""></a>
+            <a href="${pageContext.request.contextPath}/home.jsp"><img src="${pageContext.request.contextPath}/static/images/logo_icon.png" alt=""></a>
         </div>
         <!--logo and iconic logo end-->
 
@@ -34,8 +34,8 @@
 
             <!--sidebar nav start-->
             <ul class="nav nav-pills nav-stacked custom-nav">
-                <li><a href="index.html"><i class="fa fa-home"></i> <span>主页</span></a></li>
-                <li class="menu-list nav-active"><a href=""><i class="fa fa-user"></i> <span>合作方管理</span></a>
+                <li><a href="${pageContext.request.contextPath}/home.jsp"><i class="fa fa-home"></i> <span>主页</span></a></li>
+                <li class="menu-list" id="partner"> <a href=""><i class="fa fa-user"></i> <span>合作方管理</span></a>
                     <ul class="sub-menu-list">
                         <li><a href="${pageContext.request.contextPath}/partner/queryPartnerByType/2"> 广告厂商</a></li>
                         <li><a href="${pageContext.request.contextPath}/partner/queryPartnerByType/1"> 手机渠道商</a></li>
@@ -44,9 +44,9 @@
 						<li><a href="horizontal_menu.html"> 操作日志</a></li>
                     </ul>
                 </li>
-                <li class="menu-list"><a href=""><i class="fa fa-book"></i> <span>广告事件管理</span></a>
+                <li class="menu-list " id="advManager"><a href=""><i class="fa fa-book"></i> <span>广告事件管理</span></a>
                     <ul class="sub-menu-list">
-                        <li><a href="general.html">广告管理</a></li>
+                        <li><a href="${pageContext.request.contextPath}/project/goAdvProject">广告管理</a></li>
                         <li><a href="buttons.html"> 广告事件管理</a></li>
                         <li><a href="tabs-accordions.html"> 推送设置管理</a></li>
                         <li><a href="typography.html"> 广告墙</a></li>

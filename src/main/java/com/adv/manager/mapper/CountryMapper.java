@@ -3,13 +3,13 @@ package com.adv.manager.mapper;
 import com.adv.manager.po.Country;
 
 public interface CountryMapper {
-    int deleteByPrimaryKey(Integer id);
+    int deleteByPrimaryKey(String zhName);
 
     int insert(Country record);
 
     int insertSelective(Country record);
 
-    Country selectByPrimaryKey(Integer id);
+    Country selectByPrimaryKey(String zhName);
 
     int updateByPrimaryKeySelective(Country record);
 

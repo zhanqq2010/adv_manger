@@ -3,13 +3,13 @@ package com.adv.manager.mapper;
 import com.adv.manager.po.ProductProject;
 
 public interface ProductProjectMapper {
-    int deleteByPrimaryKey(Integer id);
+    int deleteByPrimaryKey(String pid);
 
     int insert(ProductProject record);
 
     int insertSelective(ProductProject record);
 
-    ProductProject selectByPrimaryKey(Integer id);
+    ProductProject selectByPrimaryKey(String pid);
 
     int updateByPrimaryKeySelective(ProductProject record);
 

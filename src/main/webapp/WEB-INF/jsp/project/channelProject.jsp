@@ -9,7 +9,7 @@
   <meta name="author" content="ThemeBucket">
   <link rel="shortcut icon" href="#" type="image/png">
 
-  <title>Left menu collapsed</title>
+  <title>广告管理平台</title>
 
   <link href="${pageContext.request.contextPath}/static/css/style.css" rel="stylesheet">
   <link href="${pageContext.request.contextPath}/static/css/style-responsive.css" rel="stylesheet">
@@ -65,7 +65,7 @@
                 <div class="adv-table editable-table ">
                 <div class="clearfix">
                     <div class="btn-group">
-                      <a href="${pageContext.request.contextPath}/project/goAddProductProject/${partnerUsername}" class="btn btn-primary"><i class="glyphicon glyphicon-plus"></i> 添加项目 </a>
+                      <a href="${pageContext.request.contextPath}/project/goAddChannelProject/${partnerName}" class="btn btn-primary"><i class="glyphicon glyphicon-plus"></i> 添加项目 </a>
                     </div>
                     <div class="btn-group pull-right">
                         <button class="btn btn-default dropdown-toggle" data-toggle="dropdown">工具 <i class="fa fa-angle-down"></i>
@@ -83,19 +83,25 @@
                 <tr>
                     <th class="col-lg-1 col-xs-1">项目ID</th>
                     <th class="col-lg-1 col-xs-1">名称</th>
+                    <th class="col-lg-1 col-xs-1">新增扣量</th>
                     <th class="col-lg-1 col-xs-1">备注</th>
                     <th class="col-lg-1 col-xs-1">操作</th>
                 </tr>
                 </thead>
                 <tbody>
-	              <c:forEach var="partner" items="${partners}">
+	              <c:forEach var="channelProject" items="${channelProjects}">
 						<tr class="">
-					        <td>${ productProject.pid}</td>
-				       	    <td>${ productProject.pname}</td>
-        					<td><textarea name="remark" rows="1" class="textareaDisEdit" readonly="readonly">${productProject.remark}</textarea> </td>
-							<td><a
-								href="${pageContext.request.contextPath}/project/goProject/${partner.username}/${partner.type}">项目管理</a></td>
-							<td><a
+					        <td>${ channelProject.pid}</td>
+				       	    <td>${ channelProject.pname}</td>
+				       	    <td>${ channelProject.newUserDeduct}</td>
+				       	    <td>${ channelProject.remark}</td>
+        				<%-- 	<td><textarea name="remark" rows="1" class="textareaDisEdit" readonly="readonly">${channelProject.remark}</textarea> </td> --%>
+							
+							<td>
+							<a
+								href="${pageContext.request.contextPath}/project/goProject/${partner.username}/${partner.type}">编辑</a>
+								&nbsp;&nbsp;
+							<a
 								href="#">删除</a></td>
 						</tr>
 				  </c:forEach>
@@ -141,6 +147,7 @@
 
 <script>
     jQuery(document).ready(function() {
+    	jQuery('#partner').addClass('nav-active');
         EditableTable.init();
     });
 </script>

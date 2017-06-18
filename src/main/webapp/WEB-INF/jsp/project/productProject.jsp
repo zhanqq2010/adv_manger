@@ -170,6 +170,7 @@
 <script src="${pageContext.request.contextPath}/static/js/scripts.js"></script>
 <script>
     jQuery(document).ready(function() {
+    	jQuery('#partner').addClass('nav-active');
         EditableTable.init();
         
     });

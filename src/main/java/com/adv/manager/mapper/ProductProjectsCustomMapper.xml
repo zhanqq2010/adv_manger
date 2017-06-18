@@ -19,14 +19,14 @@
   	<select id="queryProductProjectsByUsername" parameterType="String" resultMap="BaseResultMap">
   		select 
 	    <include refid="Base_Column_List" />
-	    from productproject WHERE partner_name = #{username}
+	    from product_project WHERE partner_name = #{username}
   	</select>
   	<select id="selectByPid" parameterType="String" resultMap="BaseResultMap">
   		select 
-	    <include refid="Base_Column_List" /> FROM productproject WHERE pid = #{pid}
+	    <include refid="Base_Column_List" /> FROM product_project WHERE pid = #{pid}
   	</select>
   	
   	<delete id="delProductProjectByPid" parameterType="String" >
-  		DELETE FROM productproject WHERE pid =  #{pid}
+  		DELETE FROM product_project WHERE pid =  #{pid}
   	</delete>
 </mapper>

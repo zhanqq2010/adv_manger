@@ -148,6 +148,7 @@
 
 <script>
     jQuery(document).ready(function() {
+    jQuery('#partner').addClass('nav-active');
         EditableTable.init();
     });
 </script>

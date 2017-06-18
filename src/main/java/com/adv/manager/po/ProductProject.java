@@ -1,9 +1,9 @@
 package com.adv.manager.po;
 
 public class ProductProject {
-    private Integer id;
-
     private String pid;
+
+    private Integer id;
 
     private String pname;
 
@@ -19,20 +19,20 @@ public class ProductProject {
 
     private Integer moneyType;
 
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
-    }
-
     public String getPid() {
         return pid;
     }
 
     public void setPid(String pid) {
         this.pid = pid == null ? null : pid.trim();
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     public String getPname() {

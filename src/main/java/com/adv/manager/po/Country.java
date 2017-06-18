@@ -1,15 +1,23 @@
 package com.adv.manager.po;
 
 public class Country {
+    private String zhName;
+
     private Integer id;
 
     private String enName;
 
-    private String zhName;
-
     private String zone;
 
     private String abbreviation;
+
+    public String getZhName() {
+        return zhName;
+    }
+
+    public void setZhName(String zhName) {
+        this.zhName = zhName == null ? null : zhName.trim();
+    }
 
     public Integer getId() {
         return id;
@@ -25,14 +33,6 @@ public class Country {
 
     public void setEnName(String enName) {
         this.enName = enName == null ? null : enName.trim();
-    }
-
-    public String getZhName() {
-        return zhName;
-    }
-
-    public void setZhName(String zhName) {
-        this.zhName = zhName == null ? null : zhName.trim();
     }
 
     public String getZone() {

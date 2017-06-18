@@ -6,10 +6,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.adv.manager.exception.CustomException;
+import com.adv.manager.mapper.AdvProjectMapper;
+import com.adv.manager.mapper.AdvProjectsCustomMapper;
 import com.adv.manager.mapper.ChannelProjectMapper;
 import com.adv.manager.mapper.ChannelProjectsCustomMapper;
 import com.adv.manager.mapper.ProductProjectMapper;
 import com.adv.manager.mapper.ProductProjectsCustomMapper;
+import com.adv.manager.po.AdvProject;
 import com.adv.manager.po.ChannelProject;
 import com.adv.manager.po.ProductProject;
 import com.adv.manager.service.ProjectService;
@@ -29,6 +32,11 @@ public class ProjectServiceImpl implements ProjectService {
 	@Autowired
 	private ChannelProjectMapper cMapper;
 	
+	@Autowired
+	private AdvProjectMapper advMapper;
+	@Autowired
+	private AdvProjectsCustomMapper advCustomMapper;
+	
 //	@Autowired
 //	private DownloadRecordMapper recordMapper;
 	
@@ -47,6 +55,15 @@ public class ProjectServiceImpl implements ProjectService {
 			return -1;
 		}
 		return pMapper.insert(project);
+	}
+	
+	@Override
+	public int addAdvProject(AdvProject project)
+			throws Exception {
+		if(project  == null){
+			return -1;
+		}
+		return advMapper.insert(project);
 	}
 	@Override
 	public int addChannelProject(ChannelProject project)
@@ -99,6 +116,11 @@ public class ProjectServiceImpl implements ProjectService {
 		pCustomMapper.delProductProjectByPid(pid);
 		
 	}
+	@Override
+	public List<AdvProject> queryAdvProjects() throws Exception {
+		return advCustomMapper.queryAdvProjects();
+	}
+
 	
 	
 //	@Override

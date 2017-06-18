@@ -194,6 +194,10 @@
     });
 </script>
 
-
+<script>
+    jQuery(document).ready(function() {
+    jQuery('#partner').addClass('nav-active');
+    });
+</script>
 </body>
 </html>

@@ -1,11 +1,9 @@
 package com.adv.manager.po;
 
-import java.math.BigDecimal;
-
 public class ChannelProject {
-    private Integer id;
-
     private String pid;
+
+    private Integer id;
 
     private String pname;
 
@@ -17,15 +15,7 @@ public class ChannelProject {
 
     private String remark;
 
-    private BigDecimal newUserDeduct;
-
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
-    }
+    private Float newUserDeduct;
 
     public String getPid() {
         return pid;
@@ -33,6 +23,14 @@ public class ChannelProject {
 
     public void setPid(String pid) {
         this.pid = pid == null ? null : pid.trim();
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     public String getPname() {
@@ -75,11 +73,11 @@ public class ChannelProject {
         this.remark = remark == null ? null : remark.trim();
     }
 
-    public BigDecimal getNewUserDeduct() {
+    public Float getNewUserDeduct() {
         return newUserDeduct;
     }
 
-    public void setNewUserDeduct(BigDecimal newUserDeduct) {
+    public void setNewUserDeduct(Float newUserDeduct) {
         this.newUserDeduct = newUserDeduct;
     }
 }

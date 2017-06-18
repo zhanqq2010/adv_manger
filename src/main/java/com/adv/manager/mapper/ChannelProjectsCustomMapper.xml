@@ -1,10 +1,33 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.adv.manager.mapper.ChannelProjectsCustomMapper" >
-  	<select id="queryChannelProjectByUsername" parameterType="String" resultType="com.adv.manager.po.ChannelProject">
-  		select * FROM channelproject WHERE partner_name = #{partnername}
+
+ <resultMap id="BaseResultMap" type="com.adv.manager.po.ChannelProject" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="pid" property="pid" jdbcType="VARCHAR" />
+    <result column="pname" property="pname" jdbcType="VARCHAR" />
+    <result column="type" property="type" jdbcType="INTEGER" />
+    <result column="partner_name" property="partnerName" jdbcType="VARCHAR" />
+    <result column="status" property="status" jdbcType="INTEGER" />
+    <result column="remark" property="remark" jdbcType="VARCHAR" />
+    <result column="new_user_deduct" property="newUserDeduct" jdbcType="DECIMAL" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, pid, pname, type, partner_name, status, remark, new_user_deduct
+  </sql>
+
+  	<select id="queryChannelProjectByUsername" parameterType="String" resultMap="BaseResultMap">
+  		select  
+  		<include refid="Base_Column_List" /> 
+  		FROM channel_project WHERE partner_name = #{partnername}
   	</select>
-  	<select id="selectByPid" parameterType="String" resultType="com.adv.manager.po.ChannelProject">
-  		select * FROM channelproject WHERE pid = #{pid}
+  	<select id="selectByPid" parameterType="String" resultMap="BaseResultMap">
+  		select 
+  		<include refid="Base_Column_List" /> 
+  		 FROM channel_project WHERE pid = #{pid}
   	</select>
+  	
+	<delete id="delProductProjectByPid" parameterType="String" >
+		DELETE FROM channel_project WHERE pid =  #{pid}
+	</delete>
 </mapper>

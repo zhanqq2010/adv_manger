@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.adv.manager.exception.CustomException;
+import com.adv.manager.po.AdvProject;
 import com.adv.manager.po.ChannelProject;
 import com.adv.manager.po.Partner;
 import com.adv.manager.po.ProductProject;
@@ -63,6 +64,13 @@ public class ProjectController {
 
 		return "home";
 	}
+	
+	@RequestMapping("/goAdvProject")
+	public String goAdvProject(Model model) throws Exception {
+		List<AdvProject> advProjects = service.queryAdvProjects();
+		model.addAttribute("advProjects", advProjects);
+		return "project/advProject";
+	}
 
 	@RequestMapping("/goAddProductProject/{partnerName}")
 	public String goAddProductProject(@PathVariable("partnerName") String partnerName, Model model) throws Exception{
@@ -71,6 +79,27 @@ public class ProjectController {
 		model.addAttribute("partnerName", partnerName);
 		return "project/addProductProject";
 	}
+	
+	@RequestMapping("/goAddAdvProject/{type}")
+	public String goAddAdvProject(@PathVariable("type") String type, Model model) throws Exception{
+		String pid = CommonUtil.createPid();
+		model.addAttribute("pid", pid);
+		model.addAttribute("type", type);
+		if("1".equals(type)){
+			return "project/addUrlAdvProject";
+		}else if("2".equals(type)){
+			return "project/addAppAdvProject";
+		}
+		return "project/addAppAdvProject";
+	}
+	
+	@RequestMapping("/createAdvProject")
+	public String createAdvProject(AdvProject project,Model model) throws Exception {
+		project.setStatus(0);
+		service.addAdvProject(project);
+		return "project/advProject";
+	}
+	
 
 	@RequestMapping("/goAddChannelProject/{partnerName}")
 	public String goAddChannelProject(@PathVariable("partnerName") String partnerName, Model model) throws Exception{

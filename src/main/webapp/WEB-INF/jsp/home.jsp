@@ -8,7 +8,7 @@
   <meta name="author" content="ThemeBucket">
   <link rel="shortcut icon" href="#" type="image/png">
 
-  <title>Left menu collapsed</title>
+  <title>欢迎</title>
 
   <link href="${pageContext.request.contextPath}/static/css/style.css" rel="stylesheet">
   <link href="${pageContext.request.contextPath}/static/css/style-responsive.css" rel="stylesheet">
