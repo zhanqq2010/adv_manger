@@ -103,5 +103,13 @@ public class FileUtil {
 		}
 
 	}
+	
+	/**
+	 * 获取项目的classes目录
+	 * @return
+	 */
+	public static String getClassesPath(){
+		return Thread.currentThread().getContextClassLoader().getResource("").getPath();
+	}
 
 }

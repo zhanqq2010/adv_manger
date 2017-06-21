@@ -23,13 +23,13 @@ import gnu.inet.encoding.StringprepException;
 import org.dom4j.DocumentHelper;
 import org.dom4j.Element;
 import org.dom4j.QName;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.xmpp.packet.IQ;
 import org.xmpp.packet.JID;
 import org.xmpp.packet.PacketError;
 
 import com.adv.manager.po.Account;
 import com.adv.manager.service.AccountService;
-import com.adv.manager.service.ServiceLocator;
 import com.adv.manager.service.UserExistsException;
 import com.adv.manager.service.UserNotFoundException;
 import com.adv.manager.xmpp.UnauthorizedException;
@@ -45,15 +45,16 @@ public class IQRegisterHandler extends IQHandler {
 
     private static final String NAMESPACE = "jabber:iq:register";
 
-    private AccountService accountService;
 
     private Element probeResponse;
+    
+    @Autowired
+	private AccountService accountService;
 
     /**
      * Constructor.
      */
     public IQRegisterHandler() {
-    	accountService = ServiceLocator.getAccountService();
         probeResponse = DocumentHelper.createElement(QName.get("query",
                 NAMESPACE));
         probeResponse.addElement("username");

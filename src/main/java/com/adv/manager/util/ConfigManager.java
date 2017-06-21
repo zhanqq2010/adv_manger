@@ -17,6 +17,8 @@
  */
 package com.adv.manager.util;
 
+import java.io.File;
+
 import org.apache.commons.configuration.Configuration;
 import org.apache.commons.configuration.ConfigurationFactory;
 import org.apache.commons.logging.Log;
@@ -57,7 +59,9 @@ public class ConfigManager {
      * Loads the default configuration file.
      */
     public void loadConfig() {
-        loadConfig("config.xml");
+    	String classesPath= FileUtil.getClassesPath();
+        loadConfig(classesPath + "config/mina/config.xml");
+//    	loadConfig("config.xml");
     }
 
     /**

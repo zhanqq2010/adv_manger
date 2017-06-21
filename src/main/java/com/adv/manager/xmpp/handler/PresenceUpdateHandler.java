@@ -21,6 +21,7 @@ import java.util.List;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.xmpp.packet.JID;
 import org.xmpp.packet.Packet;
 import org.xmpp.packet.PacketError;
@@ -28,7 +29,6 @@ import org.xmpp.packet.Presence;
 
 import com.adv.manager.po.Notification;
 import com.adv.manager.service.NotificationService;
-import com.adv.manager.service.ServiceLocator;
 import com.adv.manager.xmpp.push.NotificationManager;
 import com.adv.manager.xmpp.router.PacketDeliverer;
 import com.adv.manager.xmpp.session.ClientSession;
@@ -45,6 +45,7 @@ public class PresenceUpdateHandler {
     protected final Log log = LogFactory.getLog(getClass());
 
     protected SessionManager sessionManager;
+    @Autowired
     protected NotificationService notificationService;
     NotificationManager notificationManager;
     /**
@@ -52,7 +53,6 @@ public class PresenceUpdateHandler {
      */
     public PresenceUpdateHandler() {
         sessionManager = SessionManager.getInstance();
-        notificationService = ServiceLocator.getNotificationService();
         notificationManager = new NotificationManager();
     }
 

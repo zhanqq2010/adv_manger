@@ -23,6 +23,7 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import com.adv.manager.util.Config;
+import com.adv.manager.util.FileUtil;
 import com.adv.manager.xmpp.session.SessionManager;
 
 /** 
@@ -62,7 +63,7 @@ public class XmppServer {
     }
 
     /**
-     * Constructor. Creates a server and starts it.
+     * Constructor. Creates a s and starts it.
      */
     public XmppServer() {
         if (instance != null) {
@@ -84,7 +85,7 @@ public class XmppServer {
           //  locateServer();
             serverName = Config.getString("xmpp.domain", "127.0.0.1")
                     .toLowerCase();
-            context = new ClassPathXmlApplicationContext("spring-config.xml");
+//            context = new ClassPathXmlApplicationContext("config/spring/applicationContext-mina.xml");
             log.info("Spring Configuration loaded.");
 
 //            AdminConsole adminConsole = new AdminConsole(serverHomeDir);

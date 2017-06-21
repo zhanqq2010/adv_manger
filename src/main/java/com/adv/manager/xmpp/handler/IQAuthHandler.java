@@ -132,10 +132,11 @@ public class IQAuthHandler extends IQHandler {
 
                 // Verify that username and password are correct
                 AuthToken token = null;
+                AuthManager authManager = new AuthManager();
                 if (password != null && AuthManager.isPlainSupported()) {
-                    token = AuthManager.authenticate(username, password);
+                    token = authManager.authenticate(username, password);
                 } else if (digest != null && AuthManager.isDigestSupported()) {
-                    token = AuthManager.authenticate(username, session
+                    token = authManager.authenticate(username, session
                             .getStreamID().toString(), digest);
                 }
 

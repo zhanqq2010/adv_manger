@@ -2,20 +2,20 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.adv.manager.mapper.NotificationMapper" >
   <resultMap id="BaseResultMap" type="com.adv.manager.po.Notification" >
-    <id column="username" property="username" jdbcType="VARCHAR" />
+    <id column="uuid" property="uuid" jdbcType="VARCHAR" />
     <result column="id" property="id" jdbcType="BIGINT" />
     <result column="api_key" property="apiKey" jdbcType="VARCHAR" />
     <result column="img_url" property="imgUrl" jdbcType="VARCHAR" />
     <result column="message" property="message" jdbcType="VARCHAR" />
     <result column="mode" property="mode" jdbcType="VARCHAR" />
     <result column="title" property="title" jdbcType="VARCHAR" />
-    <result column="uuid" property="uuid" jdbcType="VARCHAR" />
+    <result column="username" property="username" jdbcType="VARCHAR" />
   </resultMap>
   <resultMap id="ResultMapWithBLOBs" type="com.adv.manager.po.Notification" extends="BaseResultMap" >
     <result column="uri" property="uri" jdbcType="LONGVARCHAR" />
   </resultMap>
   <sql id="Base_Column_List" >
-    username, id, api_key, img_url, message, mode, title, uuid
+    uuid, id, api_key, img_url, message, mode, title, username
   </sql>
   <sql id="Blob_Column_List" >
     uri
@@ -26,27 +26,27 @@
     ,
     <include refid="Blob_Column_List" />
     from notification
-    where username = #{username,jdbcType=VARCHAR}
+    where uuid = #{uuid,jdbcType=VARCHAR}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
     delete from notification
-    where username = #{username,jdbcType=VARCHAR}
+    where uuid = #{uuid,jdbcType=VARCHAR}
   </delete>
   <insert id="insert" parameterType="com.adv.manager.po.Notification" >
-    insert into notification (username, id, api_key, 
+    insert into notification (uuid, id, api_key, 
       img_url, message, mode, 
-      title, uuid, uri
+      title, username, uri
       )
-    values (#{username,jdbcType=VARCHAR}, #{id,jdbcType=BIGINT}, #{apiKey,jdbcType=VARCHAR}, 
+    values (#{uuid,jdbcType=VARCHAR}, #{id,jdbcType=BIGINT}, #{apiKey,jdbcType=VARCHAR}, 
       #{imgUrl,jdbcType=VARCHAR}, #{message,jdbcType=VARCHAR}, #{mode,jdbcType=VARCHAR}, 
-      #{title,jdbcType=VARCHAR}, #{uuid,jdbcType=VARCHAR}, #{uri,jdbcType=LONGVARCHAR}
+      #{title,jdbcType=VARCHAR}, #{username,jdbcType=VARCHAR}, #{uri,jdbcType=LONGVARCHAR}
       )
   </insert>
   <insert id="insertSelective" parameterType="com.adv.manager.po.Notification" >
     insert into notification
     <trim prefix="(" suffix=")" suffixOverrides="," >
-      <if test="username != null" >
-        username,
+      <if test="uuid != null" >
+        uuid,
       </if>
       <if test="id != null" >
         id,
@@ -66,16 +66,16 @@
       <if test="title != null" >
         title,
       </if>
-      <if test="uuid != null" >
-        uuid,
+      <if test="username != null" >
+        username,
       </if>
       <if test="uri != null" >
         uri,
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
-      <if test="username != null" >
-        #{username,jdbcType=VARCHAR},
+      <if test="uuid != null" >
+        #{uuid,jdbcType=VARCHAR},
       </if>
       <if test="id != null" >
         #{id,jdbcType=BIGINT},
@@ -95,8 +95,8 @@
       <if test="title != null" >
         #{title,jdbcType=VARCHAR},
       </if>
-      <if test="uuid != null" >
-        #{uuid,jdbcType=VARCHAR},
+      <if test="username != null" >
+        #{username,jdbcType=VARCHAR},
       </if>
       <if test="uri != null" >
         #{uri,jdbcType=LONGVARCHAR},
@@ -124,14 +124,14 @@
       <if test="title != null" >
         title = #{title,jdbcType=VARCHAR},
       </if>
-      <if test="uuid != null" >
-        uuid = #{uuid,jdbcType=VARCHAR},
+      <if test="username != null" >
+        username = #{username,jdbcType=VARCHAR},
       </if>
       <if test="uri != null" >
         uri = #{uri,jdbcType=LONGVARCHAR},
       </if>
     </set>
-    where username = #{username,jdbcType=VARCHAR}
+    where uuid = #{uuid,jdbcType=VARCHAR}
   </update>
   <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.adv.manager.po.Notification" >
     update notification
@@ -141,9 +141,9 @@
       message = #{message,jdbcType=VARCHAR},
       mode = #{mode,jdbcType=VARCHAR},
       title = #{title,jdbcType=VARCHAR},
-      uuid = #{uuid,jdbcType=VARCHAR},
+      username = #{username,jdbcType=VARCHAR},
       uri = #{uri,jdbcType=LONGVARCHAR}
-    where username = #{username,jdbcType=VARCHAR}
+    where uuid = #{uuid,jdbcType=VARCHAR}
   </update>
   <update id="updateByPrimaryKey" parameterType="com.adv.manager.po.Notification" >
     update notification
@@ -153,7 +153,7 @@
       message = #{message,jdbcType=VARCHAR},
       mode = #{mode,jdbcType=VARCHAR},
       title = #{title,jdbcType=VARCHAR},
-      uuid = #{uuid,jdbcType=VARCHAR}
-    where username = #{username,jdbcType=VARCHAR}
+      username = #{username,jdbcType=VARCHAR}
+    where uuid = #{uuid,jdbcType=VARCHAR}
   </update>
 </mapper>

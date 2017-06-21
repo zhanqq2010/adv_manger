@@ -1,7 +1,7 @@
 package com.adv.manager.po;
 
 public class Notification {
-    private String username;
+    private String uuid;
 
     private Long id;
 
@@ -15,16 +15,16 @@ public class Notification {
 
     private String title;
 
-    private String uuid;
+    private String username;
 
     private String uri;
 
-    public String getUsername() {
-        return username;
+    public String getUuid() {
+        return uuid;
     }
 
-    public void setUsername(String username) {
-        this.username = username == null ? null : username.trim();
+    public void setUuid(String uuid) {
+        this.uuid = uuid == null ? null : uuid.trim();
     }
 
     public Long getId() {
@@ -75,12 +75,12 @@ public class Notification {
         this.title = title == null ? null : title.trim();
     }
 
-    public String getUuid() {
-        return uuid;
+    public String getUsername() {
+        return username;
     }
 
-    public void setUuid(String uuid) {
-        this.uuid = uuid == null ? null : uuid.trim();
+    public void setUsername(String username) {
+        this.username = username == null ? null : username.trim();
     }
 
     public String getUri() {

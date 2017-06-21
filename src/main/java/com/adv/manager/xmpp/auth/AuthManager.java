@@ -23,8 +23,10 @@ import java.security.NoSuchAlgorithmException;
 import org.apache.commons.codec.binary.Hex;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 
-import com.adv.manager.service.ServiceLocator;
+import com.adv.manager.service.AccountService;
+import com.adv.manager.service.LoginService;
 import com.adv.manager.service.UserNotFoundException;
 import com.adv.manager.xmpp.UnauthenticatedException;
 import com.adv.manager.xmpp.XmppServer;
@@ -41,6 +43,10 @@ public class AuthManager {
     private static final Object DIGEST_LOCK = new Object();
 
     private static MessageDigest digest;
+    
+    @Autowired
+	private AccountService accountService;
+    
 
     static {
         try {
@@ -57,9 +63,9 @@ public class AuthManager {
      * @return the user's password
      * @throws UserNotFoundException if the your was not found
      */
-    public static String getPassword(String username)
+    public String getPassword(String username)
             throws Exception {
-        return ServiceLocator.getAccountService().getAccountByUsername(username)
+        return accountService.getAccountByUsername(username)
                 .getPassword();
     }
 
@@ -72,7 +78,7 @@ public class AuthManager {
      * @return an AuthToken
      * @throws UnauthenticatedException if the username and password do not match
      */
-    public static AuthToken authenticate(String username, String password)
+    public AuthToken authenticate(String username, String password)
             throws UnauthenticatedException {
         if (username == null || password == null) {
             throw new UnauthenticatedException();
@@ -107,7 +113,7 @@ public class AuthManager {
      * @return an AuthToken
      * @throws UnauthenticatedException if the username and password do not match 
      */
-    public static AuthToken authenticate(String username, String token,
+    public AuthToken authenticate(String username, String token,
             String digest) throws UnauthenticatedException {
         if (username == null || token == null || digest == null) {
             throw new UnauthenticatedException();

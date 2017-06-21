@@ -19,7 +19,6 @@ package com.adv.manager.util;
 
 import java.util.List;
 
-import org.apache.mina.integration.beans.AbstractPropertyEditor;
 
 /** 
  * Utility class to obtain the values from configruation.

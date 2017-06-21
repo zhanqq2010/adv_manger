@@ -26,14 +26,13 @@ import org.apache.commons.logging.LogFactory;
 import org.dom4j.DocumentHelper;
 import org.dom4j.Element;
 import org.dom4j.QName;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.xmpp.packet.IQ;
 
 import com.adv.manager.po.Account;
 import com.adv.manager.po.Notification;
 import com.adv.manager.service.AccountService;
 import com.adv.manager.service.NotificationService;
-import com.adv.manager.service.ServiceLocator;
-import com.adv.manager.service.UserNotFoundException;
 import com.adv.manager.util.Constant;
 import com.adv.manager.xmpp.session.ClientSession;
 import com.adv.manager.xmpp.session.SessionManager;
@@ -50,8 +49,10 @@ public class NotificationManager {
 
     private final Log log = LogFactory.getLog(getClass());
 
+    @Autowired
     private NotificationService notificationService;
     private SessionManager sessionManager;
+    @Autowired
     private AccountService accountService;
     
     
@@ -61,8 +62,6 @@ public class NotificationManager {
      * Constructor.
      */
     public NotificationManager() {
-    	notificationService = ServiceLocator.getNotificationService();
-    	accountService = ServiceLocator.getAccountService();
         sessionManager = SessionManager.getInstance();
     }
 
