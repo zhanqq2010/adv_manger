@@ -6,6 +6,7 @@ import org.xmpp.packet.IQ;
 import org.xmpp.packet.PacketError;
 
 import com.adv.manager.service.NotificationService;
+import com.adv.manager.service.impl.NotificationServiceImpl;
 import com.adv.manager.xmpp.UnauthorizedException;
 import com.adv.manager.xmpp.session.ClientSession;
 import com.adv.manager.xmpp.session.Session;
@@ -17,6 +18,7 @@ public class IQDeliverConfirmHandler extends IQHandler{
 	private NotificationService notificationService;
 	
 	public IQDeliverConfirmHandler(){
+		notificationService = new NotificationServiceImpl();
 	}
 	@Override
 	public IQ handleIQ(IQ packet) throws UnauthorizedException {

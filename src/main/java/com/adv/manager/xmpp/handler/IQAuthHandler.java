@@ -52,10 +52,10 @@ public class IQAuthHandler extends IQHandler {
         probeResponse = DocumentHelper.createElement(QName.get("query",
                 NAMESPACE));
         probeResponse.addElement("username");
-        if (AuthManager.isPlainSupported()) {
+        if (AuthManager.getInstance().isPlainSupported()) {
             probeResponse.addElement("password");
         }
-        if (AuthManager.isDigestSupported()) {
+        if (AuthManager.getInstance().isDigestSupported()) {
             probeResponse.addElement("digest");
         }
         probeResponse.addElement("resource");
@@ -132,11 +132,10 @@ public class IQAuthHandler extends IQHandler {
 
                 // Verify that username and password are correct
                 AuthToken token = null;
-                AuthManager authManager = new AuthManager();
-                if (password != null && AuthManager.isPlainSupported()) {
-                    token = authManager.authenticate(username, password);
-                } else if (digest != null && AuthManager.isDigestSupported()) {
-                    token = authManager.authenticate(username, session
+                if (password != null && AuthManager.getInstance().isPlainSupported()) {
+                    token = AuthManager.getInstance().authenticate(username, password);
+                } else if (digest != null && AuthManager.getInstance().isDigestSupported()) {
+                    token = AuthManager.getInstance().authenticate(username, session
                             .getStreamID().toString(), digest);
                 }
 

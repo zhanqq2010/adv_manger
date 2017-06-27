@@ -29,6 +29,7 @@ import org.xmpp.packet.Presence;
 
 import com.adv.manager.po.Notification;
 import com.adv.manager.service.NotificationService;
+import com.adv.manager.service.impl.NotificationServiceImpl;
 import com.adv.manager.xmpp.push.NotificationManager;
 import com.adv.manager.xmpp.router.PacketDeliverer;
 import com.adv.manager.xmpp.session.ClientSession;
@@ -52,6 +53,7 @@ public class PresenceUpdateHandler {
      * Constructor.
      */
     public PresenceUpdateHandler() {
+    	notificationService = new NotificationServiceImpl();
         sessionManager = SessionManager.getInstance();
         notificationManager = new NotificationManager();
     }

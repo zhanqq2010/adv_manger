@@ -32,6 +32,7 @@ import com.adv.manager.po.Account;
 import com.adv.manager.service.AccountService;
 import com.adv.manager.service.UserExistsException;
 import com.adv.manager.service.UserNotFoundException;
+import com.adv.manager.service.impl.AccountServiceImpl;
 import com.adv.manager.xmpp.UnauthorizedException;
 import com.adv.manager.xmpp.session.ClientSession;
 import com.adv.manager.xmpp.session.Session;
@@ -48,13 +49,13 @@ public class IQRegisterHandler extends IQHandler {
 
     private Element probeResponse;
     
-    @Autowired
 	private AccountService accountService;
 
     /**
      * Constructor.
      */
     public IQRegisterHandler() {
+    	accountService = new AccountServiceImpl();
         probeResponse = DocumentHelper.createElement(QName.get("query",
                 NAMESPACE));
         probeResponse.addElement("username");

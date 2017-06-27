@@ -28,6 +28,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import com.adv.manager.service.AccountService;
 import com.adv.manager.service.LoginService;
 import com.adv.manager.service.UserNotFoundException;
+import com.adv.manager.service.impl.AccountServiceImpl;
 import com.adv.manager.xmpp.UnauthenticatedException;
 import com.adv.manager.xmpp.XmppServer;
 
@@ -44,10 +45,24 @@ public class AuthManager {
 
     private static MessageDigest digest;
     
-    @Autowired
 	private AccountService accountService;
+	private static volatile AuthManager authManager;
     
-
+	private AuthManager(){
+		accountService = new AccountServiceImpl();
+	}
+	
+	public static AuthManager getInstance(){
+		if(authManager == null){
+			synchronized (AuthManager.class) {
+				if(authManager == null){
+					authManager = new AuthManager();
+				}
+			}
+		}
+		return authManager;
+	}
+	
     static {
         try {
             digest = MessageDigest.getInstance("SHA");
@@ -145,7 +160,7 @@ public class AuthManager {
      * 
      * @return true if plain text password authentication is supported
      */
-    public static boolean isPlainSupported() {
+    public  boolean isPlainSupported() {
         return true;
     }
 
@@ -154,11 +169,11 @@ public class AuthManager {
      * 
      * @return true if digest authentication is supported
      */
-    public static boolean isDigestSupported() {
+    public  boolean isDigestSupported() {
         return true;
     }
 
-    private static String createDigest(String token, String password) {
+    private  String createDigest(String token, String password) {
         synchronized (DIGEST_LOCK) {
             digest.update(token.getBytes());
             return Hex.encodeHexString(digest.digest(password.getBytes()));

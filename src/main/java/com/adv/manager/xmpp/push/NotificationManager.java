@@ -33,6 +33,8 @@ import com.adv.manager.po.Account;
 import com.adv.manager.po.Notification;
 import com.adv.manager.service.AccountService;
 import com.adv.manager.service.NotificationService;
+import com.adv.manager.service.impl.AccountServiceImpl;
+import com.adv.manager.service.impl.NotificationServiceImpl;
 import com.adv.manager.util.Constant;
 import com.adv.manager.xmpp.session.ClientSession;
 import com.adv.manager.xmpp.session.SessionManager;
@@ -49,10 +51,8 @@ public class NotificationManager {
 
     private final Log log = LogFactory.getLog(getClass());
 
-    @Autowired
     private NotificationService notificationService;
     private SessionManager sessionManager;
-    @Autowired
     private AccountService accountService;
     
     
@@ -62,6 +62,8 @@ public class NotificationManager {
      * Constructor.
      */
     public NotificationManager() {
+    	notificationService = new NotificationServiceImpl();
+    	accountService = new AccountServiceImpl();
         sessionManager = SessionManager.getInstance();
     }
 
