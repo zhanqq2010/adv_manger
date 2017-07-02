@@ -196,7 +196,7 @@
 
 <script>
     jQuery(document).ready(function() {
-    jQuery('#partner').addClass('nav-active');
+    jQuery('#advManager').addClass('nav-active');
     });
 </script>
 </body>

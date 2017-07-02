@@ -42,7 +42,7 @@
                 <li>
                     <a href="#">首页</a>
                 </li>
-                <li class="active">添加广告厂商项目</li>
+                <li class="active">notification</li>
             </ul>
         </div>
         <!-- page heading end-->
@@ -53,65 +53,73 @@
                 <div class="col-lg-12">
                     <section class="panel">
                         <header class="panel-heading">
-                        	  添加广告厂商项目
+                        	Send Notifications
                         </header>
                         <div class="panel-body">
                             <div class="form">
-                                <form class="cmxform form-horizontal adminex-form" id="signupForm" method="post" action="${pageContext.request.contextPath}/project/createAdvProject">
+                                <form class="cmxform form-horizontal adminex-form" id="signupForm" method="post" action="${pageContext.request.contextPath}/message/sentNotification">
                                   	<!-- 厂商的操作类型 -->
-                        
-                                    <div class="form-group ">
-                                        <label for="firstname" class="control-label col-lg-2"><label >项目id:</label></label>
+		                      <!--      <div class=" form-inline form-group">
+		                        	 <div class="form-group">
+		                                <div class="radio ">
+			                                    <input tabindex="3" type="radio"  name="demo-radio">
+			                                    <label>Black Radio </label>
+			                                    <input tabindex="3" type="radio"  name="demo-radio" checked>
+			                                    <label>Red Radio </label>
+			                                </div>
+			                            </div>
+			                            
+		                           </div> -->
+		                             <div class="form-group ">
+		                                 <label for="firstname" class="control-label col-lg-2"><label >Username:</label></label>
                                         <div class="col-lg-3">
- 											<input class="form-control"  type="text" placeholder="${pid}" disabled>
-                                        	<input name="pid" value="${pid}" type="hidden">
-                                        	<input name="type" value="1" type="hidden">
+ 											 <input tabindex="3" type="radio"  name="broadcast" value="Y" checked>
+ 											  <label>所有设备(广播) </label>
+ 											  &nbsp;&nbsp;&nbsp;&nbsp;
+ 											 <input tabindex="3" type="radio"  name="broadcast" value="N">
+ 											  <label>单个设备 </label>
+                                        </div>
+		                             </div>
+                                    <div class="form-group ">
+                                        <label for="firstname" class="control-label col-lg-2"><label >标题:</label></label>
+                                        <div class="col-lg-3">
+ 											<input class="form-control" name="title" type="text" value="Dokdo Island">
                                         </div>
                                     </div>
-                                        	<input name="partnerName" value="${partnerName}" type="hidden">
                                     
                                     <div class="form-group ">
-                                        <label for="lastname" class="control-label col-lg-2"><label>项目名称:</label></label>
+                                        <label for="lastname" class="control-label col-lg-2"><label>消息:</label></label>
                                         <div class="col-lg-3">
-                                            <input class=" form-control" id="pname" name="pname" type="text"" required />
-                                        </div>
-                                    </div>
-                                    <div class="form-group ">
-                                        <label for="lastname" class="control-label col-lg-2"><label>链接地址:</label></label>
-                                        <div class="col-lg-3">
-                                            <input class=" form-control" id="url" name="url" type="text"" required />
-                                        </div>
-                                    </div>
-                                    <div class="form-group ">
-                                        <label for="lastname" class="control-label col-lg-2"><label>关联广告厂商:</label></label>
-                                        <div class="col-lg-3">
-                                             <select id="productnickname" class="form-control input-sm">
-													<option value=''>----请选择----</option>
-													<c:forEach var="product" items="${products}">
-														<c:if test="${not empty product}">
-															<option value="${product.username}">${product.nickname}</option>
-														</c:if>
-													</c:forEach>
-												</select>
-												<label class="text-danger control-label">* 必填选项</label>
-                                        </div>
-                                    </div>
-                                    <div class="form-group ">
-                                        <label for="lastname" class="control-label col-lg-2"><label>关联广告厂商项目:</label></label>
-                                        <div class="col-lg-3">
-                                        <select id="productpid" class="form-control input-sm" >
-											<option value=''>----请选择----</option>
-										</select>
+                                        	<textarea id="message" name="message" style="width:380px; height:80px;" >Dokdo is a Korean island, the far east of the Korean territory. No doubt! No question! Don't mention it any more!</textarea>
                                         </div>
                                     </div>
                             
+                                   
+                                             <div class="form-group ">
+                                        <label for="password" class="control-label col-lg-2">类型:</label>
+                                        <div class="col-lg-3">
+                                             <input type="text" id="uri" name="uri" value="http://192.168.1.112:8080/download/apk/sexygril.apk" style="width:380px;" />
+	    <br/><span style="font-size:0.8em">ex) http://www.dokdocorea.com, geo:37.24,131.86, tel:111-222-3333</span>
+	                                        </div>
+	                               </div>
+                                   
+                                    
+                                    <div class="form-group form-inline">
+                                        <label for="confirm_password " class="control-label col-lg-2">消息类型:</label>
+                                        <div class="col-lg-3">
+                                          <input name="mode" type="text" value="1" />
+		<br/><span style="font-size:0.8em">ex) 通知栏apk:1   通知栏url:2          弹窗apk:3    弹窗url:4                静默apk:5    静默url:6</span>
+                                        </div>
+                                    </div>
                       
                          
                                   
 									<div class="form-group">
 										<label class="control-label col-lg-2">备注:</label>
 										<div class="col-lg-3">
-											<textarea name="remark" rows="3" class="form-control" ></textarea>
+											<input name="imgUrl" type="text" value="http://192.168.1.112:8080/download/image/sexygril.jpg" style="width:380px;"/>
+		<br/><span style="font-size:0.8em">ex) 通知栏apk:1   通知栏url:2          弹窗apk:3    弹窗url:4                静默apk:5    静默url:6</span>
+	
 											
 										</div>
 									</div>
@@ -120,8 +128,6 @@
                                           	<button class="btn btn-primary" type="submit">
 												提交
 											</button>
-                                            &nbsp;&nbsp;&nbsp;&nbsp;
-                                            <a class="btn btn-default" href="${pageContext.request.contextPath}/partner/queryPartnerByType/2" type="button">取消</a>
                                         </div>
                                     </div>
                                 </form>
@@ -200,7 +206,7 @@
 
 <script>
     jQuery(document).ready(function() {
-    jQuery('#advManager').addClass('nav-active');
+    jQuery('#statistics').addClass('nav-active');
     });
 </script>
 </body>

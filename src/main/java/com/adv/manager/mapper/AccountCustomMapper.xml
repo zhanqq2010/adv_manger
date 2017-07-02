@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.adv.manager.mapper.AccountCustomMapper" >
+
+  <resultMap id="BaseResultMap" type="com.adv.manager.po.Account" >
+    <id column="username" property="username" jdbcType="VARCHAR" />
+    <result column="id" property="id" jdbcType="INTEGER" />
+    <result column="created_date" property="createdDate" jdbcType="TIMESTAMP" />
+    <result column="email" property="email" jdbcType="VARCHAR" />
+    <result column="name" property="name" jdbcType="VARCHAR" />
+    <result column="password" property="password" jdbcType="VARCHAR" />
+    <result column="updated_date" property="updatedDate" jdbcType="VARCHAR" />
+  </resultMap>
+  
+  
+  <sql id="Base_Column_List" >
+    username, id, created_date, email, name, password, updated_date
+  </sql>
+
+  	<select id="getAccounts" resultMap="BaseResultMap">
+  		select  
+  		<include refid="Base_Column_List" /> 
+  		FROM account 
+  	</select>
+
+</mapper>

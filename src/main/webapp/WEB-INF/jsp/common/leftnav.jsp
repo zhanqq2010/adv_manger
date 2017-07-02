@@ -64,10 +64,10 @@
                     </ul>
                 </li>
 
-                <li class="menu-list"><a href=""><i class="fa fa-bar-chart-o"></i> <span>广告统计分析</span></a>
+                <li class="menu-list" id="statistics"><a href=""><i class="fa fa-bar-chart-o"></i> <span>广告统计分析</span></a>
                     <ul class="sub-menu-list">
-                        <li><a href="mail.html"> Inbox</a></li>
-                        <li><a href="mail_compose.html"> Compose Mail</a></li>
+                        <li><a href="${pageContext.request.contextPath}/session/list"> Session</a></li>
+                        <li><a href="${pageContext.request.contextPath}/message/notification"> Notification</a></li>
                         <li><a href="mail_view.html"> View Mail</a></li>
                     </ul>
                 </li>

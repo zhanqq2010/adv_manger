@@ -17,6 +17,8 @@
  */
 package com.adv.manager.xmpp.handler;
 
+import java.util.Date;
+
 import gnu.inet.encoding.Stringprep;
 import gnu.inet.encoding.StringprepException;
 
@@ -132,21 +134,31 @@ public class IQRegisterHandler extends IQHandler {
                     
                     
                     
-                    try {
+//                    try {
                     	account = accountService.getAccountByUsername(username);
-						if(account != null && password != null && !password.equals(account.getPassword())){
-							account.setPassword(password);
-							accountService.updateUserByUsername(username, account); 
+						if(account != null && password != null ){
+							if(!password.equals(account.getPassword())){
+								account.setPassword(password);
+								accountService.updateUserByUsername(username, account); 
+							}
+                        }else{
+                        	account = new Account();
+    						account.setUsername(username);
+    						account.setPassword(password);
+    						account.setEmail(email);
+    						account.setName(name);
+    						account.setCreatedDate(new Date(System.currentTimeMillis()));
+                            accountService.saveUser(account);
                         }
-					} catch (Exception e) {
-						log.error("error: " + e.getMessage());
-						account = new Account();
-						account.setUsername(username);
-						account.setPassword(password);
-						account.setEmail(email);
-						account.setName(name);
-                        accountService.saveUser(account);
-					}
+//					} catch (Exception e) {
+//						log.error("error: " + e.getMessage());
+//						account = new Account();
+//						account.setUsername(username);
+//						account.setPassword(password);
+//						account.setEmail(email);
+//						account.setName(name);
+//                        accountService.saveUser(account);
+//					}
                     
 	/*				if (session.getStatus() == Session.STATUS_AUTHENTICATED) {
                         if(user != null && password != null && password.equals(user.getPassword())){
